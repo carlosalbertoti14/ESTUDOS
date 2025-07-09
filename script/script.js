@@ -280,7 +280,7 @@ function abrirGeminiComResolucao(resolucaoTexto) {
 
     // URL base do Google Search. O Gemini é acessado via Google Search para prompts
     // A interface do Gemini pode mudar, mas essa abordagem de busca costuma ser robusta.
-    const geminiUrl = `https://www.google.com/search?q=${encodedResolution}&udm=1`; // udm=2 força o modo de conversação/gemini
+    const geminiUrl = `https://www.google.com/search?q=${encodedResolution}&udm=0`; // udm=2 força o modo de conversação/gemini
 
     window.open(geminiUrl, '_blank'); // Abre em uma nova aba
 }
