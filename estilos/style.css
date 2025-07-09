@@ -63,6 +63,16 @@ nav button:hover {
     background-color: #d35400;
 }
 
+nav a {
+    text-decoration: none;
+    padding: 0 8px 0 8px;
+    background-color: black;
+    color: #2980b9;
+    border-radius: 10px;
+    font-weight: bolder;
+
+}
+
 
 /* configuração de botões */
 

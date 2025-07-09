@@ -23,6 +23,6 @@ document.addEventListener('DOMContentLoaded', function() {
             window.location.href = mailtoLink;
         });
     } else {
-        console.error('Botão de enviar e-mail não encontrado! Verifique o ID "sendEmailButton".');
+       /*  console.error('Botão de enviar e-mail não encontrado! Verifique o ID "sendEmailButton".'); */
     }
 });

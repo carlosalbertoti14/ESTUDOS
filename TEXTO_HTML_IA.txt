@@ -1,0 +1,1423 @@
+Criei esse site para estudos e gostaria da sua ajuda para resolver algo.
+
+1 - 
+2 - 
+3 - 
+
+Obs.: Não coloque espaço antes dos código (para não dar erro de caracteres quando eu for colar).
+
+...................INICIO DO index.html......................
+...restante do código...
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estudo para Concurso Público: Questões e Resoluções</title>
+    
+    <meta name="description" content="Prepare-se para concursos públicos com questões atualizadas, gabaritos e resoluções detalhadas. Estude de forma eficaz para sua aprovação.">
+    <meta name="keywords" content="concurso público, questões, provas, estudo, preparação, gabarito, resolução, simulado, legislação, português, raciocínio lógico">
+    <meta name="author" content="Seu Nome ou Nome da Plataforma">
+    <meta name="email" content="c.alberto.ti14@gmail.com">
+    <link rel="canonical" href="https://estudodeprovas.netlify.app/"> 
+    <link rel="shortcut icon" href="midia/favicon.ico" type="image/x-icon"> 
+    
+    <link rel="stylesheet" href="estilos/style.css">
+    <link rel="stylesheet" href="estilos/style_apoio.css"> 
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet"> 
+    
+    <meta property="og:url" content="https://estudodeprovas.netlify.app/"> 
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Estudo para Concurso Público: Prepare-se e Conquiste Sua Vaga!">
+    <meta property="og:description" content="Acesse questões de concursos públicos com resoluções, modo estudo e acompanhamento de desempenho para sua aprovação.">
+    <meta property="og:image" content="https://estudodeprovas.netlify.app/midia/banner_sitedeestudos.png"> 
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Banner de Apresentação do Site de Estudos para Concursos Públicos">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@SeuUsuarioDoTwitter"> 
+    <meta name="twitter:title" content="Estudo para Concurso Público: Prepare-se e Conquiste Sua Vaga!">
+    <meta name="twitter:description" content="Acesse questões de concursos públicos com resoluções, modo estudo e acompanhamento de desempenho para sua aprovação.">
+    <meta name="twitter:image" content="https://estudodeprovas.netlify.app/midia/banner_sitedeestudos.png"> 
+    
+    <meta name="google-site-verification" content="SEU_CODIGO_DE_VERIFICACAO_AQUI" />
+    
+    <style>
+        /* Mantenha seus estilos internos aqui, se houver */
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Simulado INSS</h1>
+    </header>
+
+    <nav>
+        <button id="btnZerar">ZERAR</button>
+        <button id="btnValidar">VALIDAR</button>
+        <button id="btnLer">LER TUDO</button>
+        <button id="btnStop">STOP LEITURA</button>
+        <button id="btnEstudo">MODO ESTUDO</button>
+        <button id="btnPrev">⬅️</button>
+        <button id="btnProxima">➡️</button>
+        <button id="btnLista">LISTA DE PROVAS</button>
+
+        <div class="controls-group">
+            <label for="modoLeitura">MODO LEITURA:</label>
+            <select id="modoLeitura">
+                <option value="completa">Ler toda a questão</option>
+                <option value="enunciado">Ler somente o enunciado</option>
+                <option value="mudo">Mudo</option>
+            </select>
+        </div>
+
+
+
+        <div class="controls-group">
+            <span>SCORE: <span id="scoreDisplay">0/10</span></span>
+
+        </div>
+            <a href="https://conhecimento.fgv.br/concursos#tab-text-127-content" target="_blank">COMCURSOS</a>
+        </nav>
+
+
+        <div id="info">
+            <h2>"Para que seu dispositivo possa ler a questão para você, basta clicar no enunciado desejado"...bons estudos! 😉👍</h2>
+
+        </div>
+
+
+    <div class="container">
+        <div id="listaExercicios" style="display: none;">
+            </div>
+        <div id="quiz-container">
+            </div>
+    </div>
+
+
+    <section id="apoio">
+        <div>
+            <a href="mailto:suportecalp@gmail.com?subject=Contato%20Sobre%20ESTUDO%20DE%20PROVAS">
+                <img src="midia/faleconosco.png" alt="Fale Conosco" class="fale-conosco-icon"> FALE CONOSCO (Link Direto)
+            </a>
+        </div>
+
+        <p>COMPARTILHAR CONHECIMENTO</p>
+        
+    <div class="share-buttons">
+        <a href="#" id="shareFacebook"><img src="midia/comp_facebook.png" alt="Compartilhar no Facebook"></a>
+        <a href="#" id="shareWhatsapp"><img src="midia/comp_whatsapp.png" alt="Compartilhar no WhatsApp"></a>
+    </div>
+
+    <div class="copy-link-button">
+        <button id="copyLinkButton">COPIAR LINK</button>
+    </div>
+
+    <div><a href="apoio.html" target="_blank" >APOIAR COM DONATIOVO</a> </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Seu Site de Estudos. Todos os direitos reservados.</p>
+    </footer>
+
+    
+    <script src="script/provas.js"></script> 
+    <script src="script/script.js"></script>
+    <script src="script/compartilhe.js"></script>
+    <script src="script/contato.js"></script>
+
+
+</body>
+</html>
+
+...restante do código...
+...................FIM DO index.html......................
+
+
+
+...................INICIO DO style.css......................
+...restante do código...
+
+/* Geral */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7f6;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 960px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Cabeçalho */
+header {
+    background-color: #2c3e50;
+    color: #ffffff;
+    padding: 15px 0;
+    text-align: center;
+    border-radius: 8px 8px 0 0;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2em;
+    background-color: transparent;
+}
+
+
+/* Menu de Navegação */
+nav {
+    background-color: #34495e;
+    padding: 10px 0;
+    border-radius: 0 0 8px 8px;
+    text-align: center;
+    margin-bottom: 20px;
+    display: flex; /* Usar flexbox para alinhar itens */
+    flex-wrap: wrap; /* Permitir quebra de linha em telas menores */
+    justify-content: center; /* Centralizar itens */
+    align-items: center; /* Alinhar verticalmente */
+    gap: 10px; /* Espaço entre os itens */
+}
+
+nav button {
+    background-color: #e67e22;
+    color: #ffffff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em; /* Ajuste o tamanho da fonte para caber mais botões */
+    transition: background-color 0.3s ease;
+    white-space: nowrap; /* Impede que o texto do botão quebre linha */
+}
+
+nav button:hover {
+    background-color: #d35400;
+}
+
+nav a {
+    text-decoration: none;
+    padding: 0 8px 0 8px;
+    background-color: black;
+    color: #2980b9;
+    border-radius: 10px;
+    font-weight: bolder;
+
+}
+
+
+/* configuração de botões */
+
+
+#btnZerar{
+    background: red;
+}
+
+#btnValidar{
+    background-color: #0b7425;
+
+}
+
+
+#btnEstudo{
+    background-color: #2980b9;
+}
+
+#btnProxima, #btnPrev{
+    padding: 0px;
+    font-size: 2em;
+     background-color: transparent;
+     
+}
+
+#btnPrev{
+    margin-right: -15px;
+}
+/* fim de configuração de botões */
+
+
+/* Grupo de Controles no Menu (para Modo Leitura e Score) */
+.controls-group {
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Espaço entre label/select/span */
+    color: #ffffff;
+    font-size: 0.9em;
+}
+
+.controls-group label {
+    margin-right: 5px;
+}
+
+.controls-group select {
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background-color: #f8f8f8;
+    font-size: 0.9em;
+}
+
+#scoreDisplay {
+    font-weight: bold;
+    color: #f1c40f; /* Cor para o score */
+}
+
+
+/* Seções de Questões (Provas) */
+.prova {
+    margin-bottom: 30px;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #fdfdfd;
+}
+
+.prova h2 {
+    color: #2c3e50;
+    border-bottom: 2px solid #e67e22;
+    padding-bottom: 10px;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.question {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #eee;
+    border-radius: 6px;
+    background-color: #ffffff;
+}
+
+.question p {
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.question .options label {
+    display: block;
+    margin-bottom: 8px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+}
+
+.question .options label:hover {
+    background-color: #f0f0f0;
+}
+
+.question .options input[type="radio"] {
+    margin-right: 10px;
+}
+
+/* Estilo para resposta correta */
+.correct-answer {
+    background-color: #d4edda; /* Verde claro */
+    color: #155724; /* Verde escuro */
+    font-weight: bold;
+}
+
+/* Estilo para resposta incorreta (opcional, se quiser destacar) */
+.incorrect-answer {
+    background-color: #f8d7da; /* Vermelho claro */
+    color: #721c24; /* Vermelho escuro */
+    font-weight: bold;
+}
+
+/* Div de Explicação (Inicialmente oculta) */
+.explanation {
+    margin-top: 15px;
+    padding: 15px;
+    background-color: #ecf0f1;
+    border-left: 5px solid #3498db;
+    border-radius: 4px;
+    font-size: 0.9em;
+    color: #555;
+    display: none; /* Inicia oculta */
+}
+
+/* Estilo para quando a div de explicação estiver visível */
+.explanation.show {
+    display: block;
+}
+
+/* Rodapé */
+footer {
+    text-align: center;
+    margin-top: 30px;
+    padding: 15px;
+    background-color: #2c3e50;
+    color: #ffffff;
+    border-radius: 0 0 8px 8px;
+}
+
+/* Lista de Exercícios (Opcional, inicialmente oculta) */
+#listaExercicios {
+    display: none; /* Oculta por padrão */
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #ecf0f1;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+#listaExercicios ul {
+    list-style: none;
+    padding: 0;
+}
+
+#listaExercicios ul li {
+    margin-bottom: 10px;
+}
+
+#listaExercicios ul li button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%; /* Para que os botões ocupem 100% da largura */
+    text-align: left; /* Alinhar texto à esquerda */
+}
+
+#listaExercicios ul li button:hover {
+    background-color: #2980b9;
+}
+
+/* ESTILO PARA DESTAQUE DE LEITURA (MANTIDO E INTEGRADO) */
+.highlighted-text {
+    background-color: #ffff99; /* Amarelo suave */
+    font-weight: bold; /* Opcional: deixar o texto em negrito */
+    transition: background-color 0.3s ease; /* Transição suave para o destaque */
+    padding: 2px 5px; /* Pequeno preenchimento para visualização */
+    border-radius: 3px;
+}
+
+/* estilos/style.css */
+
+/* ... (seu CSS existente) ... */
+
+
+
+/* BOTÃO SABER MAIS */
+
+.explanation button.saber-mais-btn {
+    background-color: #4CAF50; /* Um verde agradável */
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    margin-top: 10px; /* Espaçamento acima do botão */
+    float: right; /* Para alinhar à direita */
+    transition: background-color 0.3s ease;
+}
+
+.explanation button.saber-mais-btn:hover {
+    background-color: #45a049; /* Verde um pouco mais escuro ao passar o mouse */
+}
+
+/* Limpar o float para que o próximo conteúdo não flutue ao lado do botão */
+.explanation::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* estilos/style_apoio.css */
+/* --- Seção de Contato --- */
+#contato {
+    max-width: 800px;
+    margin: 10px auto;
+    padding: 30px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center; /* Centraliza o texto dentro da seção */
+}
+
+#contato h2 {
+    color: #882baf; /* Cor para o título */
+    margin-bottom: 15px;
+    font-size: 2em;
+}
+
+#contato p {
+    font-size: 1.1em;
+    line-height: 1.8;
+    margin-bottom: 25px;
+}
+
+/* Estilo para o link "FALE CONOSCO" */
+#contato div:nth-of-type(2) { /* Seleciona o segundo div da seção */
+    margin-bottom: 30px;
+}
+
+#contato a {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+    font-size: 1.2em;
+    display: inline-flex; /* Para alinhar imagem e texto */
+    align-items: center;
+    gap: 10px; /* Espaço entre imagem e texto */
+    transition: color 0.3s ease;
+}
+
+#apoio a {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+    font-size: 1.2em;
+    display: inline-flex; /* Para alinhar imagem e texto */
+    align-items: center;
+    gap: 10px; /* Espaço entre imagem e texto */
+    transition: color 0.3s ease;
+}
+
+#contato a:hover {
+    color: #0056b3;
+}
+
+.fale-conosco-icon { /* Classe para sua imagem */
+    width: 50px; /* Ajuste o tamanho conforme necessário */
+    height: auto;
+    vertical-align: middle; /* Alinha a imagem com o texto */
+}
+
+/* Estilos para o formulário */
+.form-group {
+    margin-bottom: 20px;
+    text-align: left; /* Alinha os rótulos e campos à esquerda */
+}
+
+.form-group label {
+    display: block; /* Cada label em uma nova linha */
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555;
+}
+
+input[type="text"],
+textarea {
+    width: calc(100% - 20px); /* Ocupa a largura total menos o padding */
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+    box-sizing: border-box; /* Garante que padding não aumente a largura total */
+}
+
+textarea {
+    resize: vertical; /* Permite redimensionar apenas verticalmente */
+    min-height: 120px; /* Altura mínima da caixa de texto */
+}
+
+button {
+    background-color: #03571c; /* Cor do botão */
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 15px;
+}
+
+button:hover {
+    background-color: #6a2185; /* Cor mais escura no hover */
+    transform: translateY(-2px); /* Pequeno efeito de elevação */
+}
+
+/* ... restante do código ... */
+
+/* Estilos para o formulário */
+.form-group {
+    margin-bottom: 20px;
+    text-align: left; /* Alinha os rótulos e campos à esquerda */
+}
+
+.form-group label {
+    display: block; /* Cada label em uma nova linha */
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555;
+}
+
+input[type="text"],
+input[type="email"], /* Adicionei isso para garantir que o estilo se aplique ao campo de email */
+textarea {
+    width: calc(100% - 20px); /* Ocupa a largura total menos o padding */
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+    box-sizing: border-box; /* Garante que padding não aumente a largura total */
+}
+
+textarea {
+    resize: vertical; /* Permite redimensionar apenas verticalmente */
+    min-height: 120px; /* Altura mínima da caixa de texto */
+}
+
+button {
+    background-color: #03772a; /* Cor do botão */
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 15px;
+}
+
+button:hover {
+    background-color: #3268db; /* Cor mais escura no hover */
+    transform: translateY(-2px); /* Pequeno efeito de elevação */
+}
+
+/* ... restante do código ... */
+
+
+/* info */
+
+#info{
+    padding: 10px;
+}
+#info h2{
+    font-size: 1em;
+    text-align: center;
+    margin: 0;
+    color: gray;
+}
+/* info */
+
+/****************************** fim de entre em cotato *******************************/
+
+
+/*********************** apoio ************************/
+
+#apoio {
+    /* ... (manter estilos existentes para #apoio) ... */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 20px;
+    background-color: #f9f9f9;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    margin: 20px 0;
+}
+
+#apoio p {
+    /* ... (manter estilos existentes para #apoio p) ... */
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 1.2em;
+    color: #333;
+    max-width: 600px;
+    line-height: 1.6;
+}
+
+#apoio .share-buttons {
+    /* ... (manter estilos existentes para #apoio .share-buttons) ... */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px; /* Reduzi um pouco a margem para dar espaço ao novo botão */
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+#apoio .share-buttons img {
+    /* ... (manter estilos existentes para #apoio .share-buttons img) ... */
+    max-width: 150px;
+    height: auto;
+    border-radius: 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#apoio .share-buttons img:hover {
+    /* ... (manter estilos existentes para hover) ... */
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos para o novo botão "COPIAR LINK" */
+#apoio .copy-link-button {
+    text-align: center;
+    margin-bottom: 20px; /* Espaço entre o botão de copiar e o botão de apoio */
+    width: 100%; /* Garante que a div ocupe a largura total para centralizar */
+}
+
+#apoio .copy-link-button button {
+    display: inline-block;
+    padding: 12px 30px; /* Um pouco menor que o botão de apoio principal */
+    background-color: #4681b6; /* Uma cor neutra para o botão de copiar */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+}
+
+#apoio .copy-link-button button:hover {
+    background-color: #495057; /* Cor mais escura no hover */
+    transform: translateY(-2px); /* Leve movimento para cima */
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Estilos para o botão "APOIAR COM DONATIOVO" */
+#apoio div:last-of-type a { /* Importante: este seletor pode precisar de ajuste se adicionar mais divs */
+    /* ... (manter estilos existentes para #apoio div:last-of-type a) ... */
+    display: inline-block;
+    padding: 15px 40px;
+    background-color: #068526;
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 1.1em;
+    letter-spacing: 0.05em;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#apoio div:last-of-type a:hover {
+    /* ... (manter estilos existentes para hover) ... */
+    background-color: #6a2185;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/********************* fim apoio *************************/
+
+...restante do código...
+...................FIM DO style.css......................
+
+
+...................INICIO DO script.js......................
+...restante do código...
+
+// scritp/script.js
+
+// 'questoes' será carregado do arquivo script/provas.js
+
+let currentProofIndex = 0; // Controla qual prova está sendo exibida (0 para prova1, 1 para prova2, etc.)
+let currentQuestionIndex = 0; // Controla a questão atual dentro da prova
+let currentScore = 0; // Variável para o score
+let totalQuestions = 0; // Variável para o total de questões na prova atual
+
+// Variável para controle da leitura em voz alta
+let speechSynthesizer = null;
+let currentUtterance = null; // Para controlar a fala atual
+
+// Variável para controlar a leitura sequencial no Modo Estudo
+let studyModeReadingIndex = 0;
+let isReadingStudyMode = false; // Flag para saber se estamos no modo estudo de leitura
+
+// Elementos do DOM
+const quizContainer = document.getElementById('quiz-container');
+const scoreDisplay = document.getElementById('scoreDisplay');
+const modoLeituraSelect = document.getElementById('modoLeitura');
+
+// Função para atualizar o display do score
+function updateScoreDisplay() {
+    scoreDisplay.textContent = `${currentScore}/${totalQuestions}`;
+}
+
+// Função para gerar as questões na página HTML
+function gerarQuestoes(provaKey) {
+    quizContainer.innerHTML = ''; // Limpa o conteúdo anterior
+
+    // Verifica se 'questoes' está definido e se a provaKey existe
+    if (typeof questoes === 'undefined' || !questoes[provaKey]) {
+        // Mensagem de fallback, se por algum motivo ainda não encontrar
+        quizContainer.innerHTML = '<p>Erro: Dados das provas não carregados ou prova não encontrada. Verifique seu arquivo script/provas.js.</p>';
+        console.error('Objeto "questoes" não encontrado ou provaKey inválida:', provaKey);
+        return;
+    }
+
+    const provaData = questoes[provaKey];
+    totalQuestions = provaData.length; // Atualiza o total de questões
+    currentScore = 0; // Reseta o score para a nova prova
+    updateScoreDisplay(); // Atualiza o display do score
+
+    const provaDiv = document.createElement('div');
+    provaDiv.className = 'prova';
+    provaDiv.id = provaKey;
+
+    const tituloProva = document.createElement('h2');
+    tituloProva.textContent = provaKey.replace('prova', 'Prova '); // Ex: "Prova 1"
+    provaDiv.appendChild(tituloProva);
+
+    provaData.forEach((item, index) => {
+        const questionDiv = document.createElement('div');
+        questionDiv.className = 'question';
+        questionDiv.setAttribute('data-question-id', `${provaKey}-q${index}`); // ID único para a questão
+
+        const questionText = document.createElement('p');
+        questionText.textContent = `Questão ${index + 1}: ${item.questao}`;
+        questionDiv.appendChild(questionText);
+
+        const optionsDiv = document.createElement('div');
+        optionsDiv.className = 'options';
+
+        item.opcoes.forEach((opcao, opIndex) => {
+            const label = document.createElement('label');
+            const input = document.createElement('input');
+            input.type = 'radio';
+            input.name = `${provaKey}-questao-${index}`; // Garante que apenas uma opção possa ser selecionada por questão
+            input.value = opIndex;
+            input.setAttribute('data-correct', opcao.correta);
+
+            label.appendChild(input);
+            label.appendChild(document.createTextNode(String.fromCharCode(97 + opIndex) + ') ' + opcao.texto)); // a), b), c), d)
+            optionsDiv.appendChild(label);
+        });
+
+        questionDiv.appendChild(optionsDiv);
+
+        /************* CRIAR EXPLICAÇÃO ***************/
+
+        const explanationDiv = document.createElement('div');
+        explanationDiv.className = 'explanation';
+
+        // CONTEÚDO DA RESOLUÇÃO (APENAS O TEXTO)
+        const resolutionContent = document.createElement('p');
+        resolutionContent.innerHTML = `<strong>Resolução:</strong> ${item.resolucao}`;
+        explanationDiv.appendChild(resolutionContent);
+
+        // NOVO: BOTÃO "SABER MAIS"
+        const saberMaisBtn = document.createElement('button');
+        saberMaisBtn.textContent = 'Saber Mais';
+        saberMaisBtn.className = 'saber-mais-btn'; // Use a classe CSS que adicionamos
+        saberMaisBtn.addEventListener('click', (event) => { // <-- Adicionado 'event' como parâmetro
+            event.stopPropagation(); // <-- CRUCIAL: Impede que o clique no botão "suba" para a div da resolução
+            pararLeitura(); // Para qualquer leitura antes de abrir o Gemini
+
+            // Pega apenas o texto da resolução, excluindo a tag <strong>
+            const fullResolutionText = resolutionContent.textContent.replace('Resolução: ', '').trim();
+            abrirGeminiComResolucao(fullResolutionText);
+        });
+        explanationDiv.appendChild(saberMaisBtn);
+
+        // NOVO LISTENER: Adicionado especificamente para a explicação
+        // Este listener só será ativado se o clique for na explanationDiv, mas não no botão Saber Mais (devido ao stopPropagation)
+        explanationDiv.addEventListener('click', (event) => {
+            // Se o modo de leitura está em "mudo", não faz a leitura.
+            if (modoLeituraSelect.value === 'mudo') {
+                pararLeitura();
+                return;
+            }
+
+            pararLeitura(); // Para qualquer leitura anterior
+
+            // Seleciona especificamente o parágrafo dentro da explanationDiv
+            // (que contém o texto da resolução).
+            // Usamos event.currentTarget para garantir que estamos buscando dentro da 'explanationDiv' clicada.
+            const explanationParagraph = event.currentTarget.querySelector('p');
+            if (explanationParagraph) {
+                // Pega o texto do parágrafo, removendo o "Resolução: " inicial
+                const textToRead = explanationParagraph.textContent.replace('Resolução:', '').trim(); // Corrigido para remover "Resolução:" com dois pontos
+                lerTexto(textToRead);
+            }
+        });
+
+
+        questionDiv.appendChild(explanationDiv);
+
+        // ADICIONA A QUESTÃO À PROVA DIV
+        provaDiv.appendChild(questionDiv);
+    });
+
+    // ANEXA A PROVA COMPLETA AO CONTÊINER PRINCIPAL
+    quizContainer.appendChild(provaDiv);
+    currentQuestionIndex = 0; // Reinicia o índice da questão para a nova prova
+}
+
+// Função para inicializar o SpeechSynthesis
+function initSpeechSynthesis() {
+    if ('speechSynthesis' in window) {
+        speechSynthesizer = window.speechSynthesis;
+    } else {
+        alert('Seu navegador não suporta a API SpeechSynthesis. A função de leitura não estará disponível.');
+        // Desativar opções de leitura se a API não estiver disponível
+        modoLeituraSelect.value = 'mudo';
+        modoLeituraSelect.disabled = true;
+        document.getElementById('btnLer').disabled = true;
+        document.getElementById('btnStop').disabled = true;
+        document.getElementById('btnEstudo').disabled = true;
+    }
+}
+
+// Função para ler o texto (usada para ler texto completo ou elementos individuais)
+function lerTexto(text) {
+    if (speechSynthesizer && modoLeituraSelect.value !== 'mudo') {
+        pararLeitura(); // Para qualquer leitura anterior
+
+        console.log('Tentando ler texto:', text);
+        currentUtterance = new SpeechSynthesisUtterance(text);
+        currentUtterance.lang = 'pt-BR'; // Define o idioma para português do Brasil
+
+        currentUtterance.onend = function(event) {
+            console.log('Leitura concluída com sucesso!');
+        };
+        currentUtterance.onerror = function(event) {
+            console.error('Erro na leitura:', event.error);
+        };
+
+        speechSynthesizer.speak(currentUtterance);
+    } else {
+        console.log('Leitura desativada: speechSynthesizer não disponível ou modo está em mudo.', {
+            speechSynthesizer: speechSynthesizer,
+            modoLeituraValue: modoLeituraSelect.value
+        });
+    }
+}
+
+// Função para parar a leitura
+function pararLeitura() {
+    if (speechSynthesizer && speechSynthesizer.speaking) {
+        speechSynthesizer.cancel();
+    }
+    currentUtterance = null;
+    // Sempre remove destaques ao parar a leitura
+    document.querySelectorAll('.highlighted-text').forEach(el => {
+        el.classList.remove('highlighted-text');
+    });
+}
+
+// Função para iniciar a leitura da próxima parte da questão no Modo Estudo
+function readStudyPart(provaData, questionIndex, partIndex) {
+    pararLeitura(); // Garante que a leitura atual é interrompida
+
+    const item = provaData[questionIndex];
+    let textToRead = '';
+    let elementToHighlight = null; // O elemento HTML a ser destacado
+
+    // Limpa destaques anteriores (importante para transições entre partes da mesma questão)
+    document.querySelectorAll('.highlighted-text').forEach(el => {
+        el.classList.remove('highlighted-text');
+    });
+
+    const currentQuestionDiv = document.querySelector(`#prova${currentProofIndex + 1} [data-question-id="prova${currentProofIndex + 1}-q${questionIndex}"]`);
+    if (!currentQuestionDiv) {
+        console.error('Div da questão não encontrada para destaque.');
+        isReadingStudyMode = false;
+        return;
+    }
+
+    // Rola a tela para a questão atual
+    currentQuestionDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+
+    switch (partIndex) {
+        case 0: // Enunciado da questão
+            textToRead = `Questão ${questionIndex + 1}: ${item.questao}`;
+            elementToHighlight = currentQuestionDiv.querySelector('p'); // O parágrafo do enunciado
+            break;
+        case 1: // Resposta correta
+            const correctOption = item.opcoes.find(op => op.correta);
+            textToRead = correctOption ? `Resposta correta: ${correctOption.texto}` : 'Resposta correta não encontrada.';
+            // Encontra o label da resposta correta para destacar
+            elementToHighlight = currentQuestionDiv.querySelector(`input[name="prova${currentProofIndex + 1}-questao-${questionIndex}"][data-correct="true"]`).closest('label');
+            break;
+        case 2: // Resolução
+            textToRead = `Resolução: ${item.resolucao}`;
+            elementToHighlight = currentQuestionDiv.querySelector('.explanation'); // A div da resolução
+            break;
+        default:
+            // Todas as partes desta questão foram lidas, passar para a próxima questão
+            studyModeReadingIndex++;
+            if (isReadingStudyMode && studyModeReadingIndex < provaData.length) {
+                readStudyPart(provaData, studyModeReadingIndex, 0); // Inicia a próxima questão do zero
+            } else {
+                // Todas as questões foram lidas
+                isReadingStudyMode = false;
+                console.log("Modo Estudo: Leitura da prova concluída.");
+                alert('Modo Estudo concluído!');
+            }
+            return; // Sai da função, não há mais texto para ler nesta parte
+    }
+
+    if (elementToHighlight) {
+        elementToHighlight.classList.add('highlighted-text');
+    }
+
+    currentUtterance = new SpeechSynthesisUtterance(textToRead);
+    currentUtterance.lang = 'pt-BR';
+
+    currentUtterance.onend = function() {
+        console.log(`Modo Estudo: Leitura da parte ${partIndex} da questão ${questionIndex + 1} concluída.`);
+        // Remove destaque da parte atual após a leitura
+        if (elementToHighlight) {
+            elementToHighlight.classList.remove('highlighted-text');
+        }
+        // Chama a próxima parte da mesma questão ou a primeira parte da próxima questão
+        if (isReadingStudyMode) { // Só continua se o modo estudo ainda estiver ativo
+            readStudyPart(provaData, questionIndex, partIndex + 1);
+        }
+    };
+    currentUtterance.onerror = function(event) {
+        console.error(`Modo Estudo: Erro na leitura da parte ${partIndex} da questão ${questionIndex + 1}:`, event.error);
+        // Em caso de erro, remove o destaque e tenta ir para a próxima parte
+        if (elementToHighlight) {
+            elementToHighlight.classList.remove('highlighted-text');
+        }
+        if (isReadingStudyMode) { // Só continua se o modo estudo ainda estiver ativo
+            readStudyPart(provaData, questionIndex, partIndex + 1);
+        }
+    };
+
+    speechSynthesizer.speak(currentUtterance);
+}
+
+
+// NOVA FUNÇÃO: ABRE O GEMINI COM A RESOLUÇÃO
+function abrirGeminiComResolucao(resolucaoTexto) {
+    // Codifica o texto da resolução para ser seguro em uma URL
+    const encodedResolution = encodeURIComponent(resolucaoTexto + "\n\nExplique melhor.");
+
+    // URL base do Google Search. O Gemini é acessado via Google Search para prompts
+    // A interface do Gemini pode mudar, mas essa abordagem de busca costuma ser robusta.
+    const geminiUrl = `https://www.google.com/search?q=${encodedResolution}&udm=0`; // udm=2 força o modo de conversação/gemini
+
+    window.open(geminiUrl, '_blank'); // Abre em uma nova aba
+}
+
+
+// --- Funções dos Botões do Menu ---
+
+// Botão ZERAR
+document.getElementById('btnZerar').addEventListener('click', () => {
+    if (confirm('Tem certeza que deseja zerar o progresso atual e recomeçar?')) {
+        pararLeitura(); // Para a leitura e remove destaques
+        isReadingStudyMode = false; // Desativa o modo estudo de leitura
+
+        const allRadios = document.querySelectorAll('input[type="radio"]');
+        allRadios.forEach(radio => {
+            radio.checked = false;
+            radio.closest('label').classList.remove('correct-answer', 'incorrect-answer');
+        });
+
+        const allExplanations = document.querySelectorAll('.explanation');
+        allExplanations.forEach(exp => {
+            exp.classList.remove('show');
+        });
+
+        currentScore = 0; // Reseta o score
+        updateScoreDisplay(); // Atualiza o display
+
+        alert('Progresso zerado!');
+    }
+});
+
+// Botão VALIDAR
+document.getElementById('btnValidar').addEventListener('click', () => {
+    pararLeitura(); // Para a leitura e remove destaques
+    isReadingStudyMode = false; // Desativa o modo estudo de leitura
+
+    const currentProvaKey = `prova${currentProofIndex + 1}`;
+    const currentProvaData = questoes[currentProvaKey];
+    if (!currentProvaData) return;
+
+    let allAnswered = true;
+    let correctAnswersCount = 0; // Contador de acertos
+
+    const questionsElements = document.querySelectorAll(`#${currentProvaKey} .question`);
+
+    questionsElements.forEach((qElement, qIndex) => {
+        const selectedOption = qElement.querySelector(`input[name="${currentProvaKey}-questao-${qIndex}"]:checked`);
+        const explanationDiv = qElement.querySelector('.explanation');
+        const labels = qElement.querySelectorAll('.options label');
+
+        // Remove classes de feedback anteriores
+        labels.forEach(label => label.classList.remove('correct-answer', 'incorrect-answer'));
+
+        if (!selectedOption) {
+            allAnswered = false;
+            // Se não respondida, garante que a explicação esteja oculta (ou não destacada)
+            explanationDiv.classList.remove('show');
+        } else {
+            const isCorrect = selectedOption.getAttribute('data-correct') === 'true';
+            const selectedLabel = selectedOption.closest('label');
+
+            if (isCorrect) {
+                selectedLabel.classList.add('correct-answer');
+                correctAnswersCount++; // Incrementa o score
+            } else {
+                selectedLabel.classList.add('incorrect-answer');
+                // Encontrar e marcar a correta em azul, mesmo que o usuário tenha errado
+                const correctLabel = qElement.querySelector(`input[name="${currentProvaKey}-questao-${qIndex}"][data-correct="true"]`).closest('label');
+                correctLabel.classList.add('correct-answer');
+            }
+            explanationDiv.classList.add('show'); // Mostra a resolução
+        }
+    });
+
+    if (!allAnswered) {
+        alert('Por favor, responda a todas as questões antes de validar.');
+    } else {
+        currentScore = correctAnswersCount; // Atualiza o score com as acertos
+        alert(`Correção concluída! Você acertou ${currentScore} de ${totalQuestions} questões.`);
+    }
+    updateScoreDisplay(); // Atualiza o display do score após a validação
+});
+
+// Botão LER PROVA COMPLETA (Lê todo o conteúdo visível de uma vez!)
+document.getElementById('btnLer').addEventListener('click', () => {
+    pararLeitura(); // Para a leitura e remove destaques
+    isReadingStudyMode = false; // Desativa o modo estudo de leitura se ativo
+
+    const currentProvaKey = `prova${currentProofIndex + 1}`;
+    const currentProvaElement = document.getElementById(currentProvaKey);
+
+    if (currentProvaElement && modoLeituraSelect.value !== 'mudo') {
+        let fullTextToRead = '';
+        fullTextToRead += currentProvaElement.querySelector('h2').textContent + '. '; // Título da prova
+
+        currentProvaElement.querySelectorAll('.question').forEach((questionDiv) => {
+            const questionText = questionDiv.querySelector('p').textContent;
+            fullTextToRead += questionText + '. ';
+
+            if (modoLeituraSelect.value === 'completa') { // Inclui opções se o modo for 'completa'
+                questionDiv.querySelectorAll('.options label').forEach(label => {
+                    const optionText = label.textContent;
+                    fullTextToRead += optionText + '. ';
+                });
+            }
+        });
+        lerTexto(fullTextToRead); // Usa a função lerTexto original para ler a string completa
+    } else if (modoLeituraSelect.value === 'mudo') {
+        alert('O modo de leitura está em "Mudo". Por favor, selecione outra opção para ativar a leitura.');
+    } else {
+        alert('Nenhuma prova carregada para leitura.');
+    }
+});
+
+// Botão STOP LEITURA
+document.getElementById('btnStop').addEventListener('click', () => {
+    pararLeitura(); // Para a leitura e remove destaques
+    isReadingStudyMode = false; // Desativa o modo estudo de leitura
+});
+
+// Botão MODO ESTUDO (Inicia a leitura sequencial com destaque)
+document.getElementById('btnEstudo').addEventListener('click', () => {
+    pararLeitura(); // Para qualquer leitura anterior e remove destaques
+    isReadingStudyMode = true; // Ativa o flag do modo estudo
+    studyModeReadingIndex = 0; // Reinicia o contador de questões
+
+    const currentProvaKey = `prova${currentProofIndex + 1}`;
+    const currentProvaData = questoes[currentProvaKey];
+    if (!currentProvaData) {
+        alert('Nenhuma prova carregada para o modo estudo.');
+        return;
+    }
+
+    // 1. Exibir todas as respostas corretas e resoluções
+    const questionsElements = document.querySelectorAll(`#${currentProvaKey} .question`);
+    questionsElements.forEach((qElement, qIndex) => {
+        const explanationDiv = qElement.querySelector('.explanation');
+        const labels = qElement.querySelectorAll('.options label');
+
+        labels.forEach(label => label.classList.remove('correct-answer', 'incorrect-answer'));
+
+        const correctOption = currentProvaData[qIndex].opcoes.find(op => op.correta);
+        if (correctOption) {
+            const correctLabelElement = qElement.querySelector(`input[name="${currentProvaKey}-questao-${qIndex}"][data-correct="true"]`).closest('label');
+            correctLabelElement.classList.add('correct-answer');
+        }
+        explanationDiv.classList.add('show');
+    });
+
+    // 2. Iniciar leitura automática (pergunta, resposta correta, resolução)
+    if (modoLeituraSelect.value !== 'mudo') {
+        readStudyPart(currentProvaData, studyModeReadingIndex, 0); // Inicia a leitura da primeira parte da primeira questão
+    } else {
+        alert('O modo de leitura está em "Mudo". As respostas e resoluções foram exibidas, mas a leitura automática está desativada.');
+    }
+});
+
+
+// Botão PRÓXIMA PROVA
+document.getElementById('btnProxima').addEventListener('click', () => {
+    pararLeitura(); // Para a leitura e remove destaques
+    isReadingStudyMode = false; // Desativa o modo estudo de leitura
+
+    if (typeof questoes === 'undefined') {
+        alert('Erro: Dados das provas não carregados.');
+        return;
+    }
+
+    const totalProvas = Object.keys(questoes).length;
+    if (currentProofIndex < totalProvas - 1) {
+        currentProofIndex++;
+        const nextProvaKey = `prova${currentProofIndex + 1}`;
+        gerarQuestoes(nextProvaKey);
+        // Zera o estado da nova prova ao carregar
+        document.getElementById('btnZerar').click(); // Reusa a função zerar para limpar o estado
+    } else {
+        alert('Você chegou ao final das provas disponíveis.');
+    }
+});
+
+// PROVA ANTERIOR
+document.getElementById('btnPrev').addEventListener('click', () => {
+    pararLeitura(); // Para a leitura e remove destaques
+    isReadingStudyMode = false; // Desativa o modo estudo de leitura
+
+    if (typeof questoes === 'undefined') {
+        alert('Erro: Dados das provas não carregados.');
+        return;
+    }
+
+    if (currentProofIndex > 0) { // Verifica se não estamos na primeira prova
+        currentProofIndex--; // Decrementa o índice para ir para a prova anterior
+        const prevProvaKey = `prova${currentProofIndex + 1}`; // Calcula a chave da prova anterior
+        gerarQuestoes(prevProvaKey); // Carrega as questões da prova anterior
+        // Zera o estado da nova prova ao carregar
+        document.getElementById('btnZerar').click(); // Reusa a função zerar para limpar o estado
+    } else {
+        alert('Você já está na primeira prova disponível.');
+    }
+});
+
+// Botão LISTA (para exibir as provas disponíveis e permitir seleção)
+document.getElementById('btnLista').addEventListener('click', () => {
+    pararLeitura(); // Para a leitura e remove destaques
+    isReadingStudyMode = false; // Desativa o modo estudo de leitura
+
+    const listaDiv = document.getElementById('listaExercicios');
+    listaDiv.innerHTML = '<h3>Escolha uma Prova:</h3><ul></ul>';
+    const ul = listaDiv.querySelector('ul');
+
+    if (typeof questoes === 'undefined') {
+        ul.innerHTML = '<li>Erro: Dados das provas não carregados.</li>';
+        listaDiv.style.display = 'block';
+        return;
+    }
+
+    Object.keys(questoes).forEach((key, index) => {
+        const li = document.createElement('li');
+        const button = document.createElement('button');
+        button.textContent = key.replace('prova', 'Prova ');
+        button.addEventListener('click', () => {
+            currentProofIndex = index;
+            gerarQuestoes(key);
+            listaDiv.style.display = 'none'; // Esconde a lista após a seleção
+            document.getElementById('btnZerar').click(); // Zera o estado da prova carregada
+        });
+        li.appendChild(button);
+        ul.appendChild(li);
+    });
+
+    // Alterna a visibilidade da lista
+    listaDiv.style.display = listaDiv.style.display === 'block' ? 'none' : 'block';
+});
+
+// Event listener para o MODO LEITURA (seleção de caixa de texto)
+modoLeituraSelect.addEventListener('change', () => {
+    pararLeitura(); // Para a leitura e remove destaques
+    isReadingStudyMode = false; // Desativa o modo estudo de leitura
+
+    const selectedMode = modoLeituraSelect.value;
+    if (selectedMode === 'mudo') {
+        alert('Modo de leitura desativado.');
+    } else {
+        alert(`Modo de leitura definido para: "${modoLeituraSelect.options[modoLeituraSelect.selectedIndex].text}".`);
+    }
+});
+
+
+// Event listener para ler questões/opções ao clicar nelas (depende do MODO LEITURA)
+// IMPORTANTE: A lógica para clicar na resolução foi removida daqui
+// e adicionada diretamente na explanationDiv na função gerarQuestoes() para maior precisão.
+document.addEventListener('click', (event) => {
+    // Se o modo estudo de leitura estiver ativo, não interfere com cliques individuais
+    if (isReadingStudyMode) {
+        return;
+    }
+
+    if (modoLeituraSelect.value === 'mudo') {
+        pararLeitura(); // Garante que não lerá nada se estiver no mudo
+        return;
+    }
+
+    pararLeitura(); // Para qualquer leitura anterior de elementos individuais e remove destaques
+
+    if (event.target.closest('.question p')) { // Clicou no texto da questão (enunciado)
+        const questionDiv = event.target.closest('.question');
+        const questionText = questionDiv.querySelector('p').textContent;
+
+        if (modoLeituraSelect.value === 'completa') {
+            let fullQuestionText = questionText + '. ';
+            questionDiv.querySelectorAll('.options label').forEach(label => {
+                fullQuestionText += label.textContent + '. ';
+            });
+            lerTexto(fullQuestionText);
+        } else if (modoLeituraSelect.value === 'enunciado') {
+            lerTexto(questionText);
+        }
+    } else if (event.target.closest('.question .options label')) { // Clicou em uma opção
+        const optionText = event.target.closest('.question .options label').textContent;
+        lerTexto(optionText);
+    }
+    // O bloco 'else if (event.target.closest('.explanation.show'))' foi REMOVIDO daqui.
+    // Ele agora é tratado por um listener mais específico na função gerarQuestoes.
+});
+
+// Inicialização: carrega a primeira prova quando a página é carregada
+document.addEventListener('DOMContentLoaded', () => {
+    initSpeechSynthesis();
+    gerarQuestoes('prova1'); // Carrega a PROVA 1 por padrão ao iniciar
+});
+
+...fim do script.js
+
+/ media/provas.js
+
+const questoes = {
+    'prova1': [
+        // Suas questões da prova1 aqui
+        {
+            questao: 'De acordo com a Constituição Federal de 1988, a seguridade social brasileira compreende um conjunto integrado de ações de iniciativa dos Poderes Públicos e da sociedade, visando assegurar os direitos relativos à:',
+            opcoes: [
+                { texto: 'A seguridade social compreende a saúde, a previdência social e a assistência social.', correta: true },
+                { texto: 'A seguridade social compreende apenas a previdência social e a assistência social.', correta: false },
+                { texto: 'A seguridade social compreende a saúde e a previdência social, excluindo a assistência social.', correta: false },
+                { texto: 'A seguridade social é exclusivamente responsabilidade do Ministério da Previdência Social.', correta: false }
+            ],
+            resolucao: 'A Constituição Federal de 1988, em seu Art. 194, define a seguridade social como um conjunto integrado de ações que englobam a saúde, a previdência social e a assistência social.'
+        },
+        {
+            questao: 'Sobre a Previdência Social no Brasil, é correto afirmar que:',
+            opcoes: [
+                { texto: 'Apenas os trabalhadores com carteira assinada têm direito à Previdência Social.', correta: false },
+                { texto: 'A Previdência Social é um sistema contributivo e de filiação obrigatória, respeitando os princípios da universalidade de cobertura e do cálculo dos benefícios.', correta: true },
+                { texto: 'A Previdência Social oferece benefícios para todos os cidadãos, independentemente de contribuição prévia.', correta: false },
+                { texto: 'Os benefícios da Previdência Social são custeados exclusivamente pelos empregadores.', correta: false }
+            ],
+            resolucao: 'A Previdência Social é um sistema de caráter contributivo e de filiação obrigatória, o que significa que o acesso aos benefícios depende de contribuições prévias. Ela busca a universalidade de cobertura e do cálculo dos benefícios, mas com a contrapartida das contribuições.'
+        },
+        {
+            questao: 'Em relação ao auxílio-doença, assinale a alternativa correta:',
+            opcoes: [
+                { texto: 'Auxílio-doença é devido ao segurado que, após cumprir a carência exigida, fica incapacitado para o seu trabalho ou para a sua atividade habitual por mais de 15 dias consecutivos.', correta: true },
+                { texto: 'Auxílio-doença é um benefício concedido apenas a trabalhadores rurais.', correta: false },
+                { texto: 'Não há necessidade de carência para a concessão de auxílio-doença.', correta: false },
+                { texto: 'O auxílio-doença é um benefício vitalício, uma vez concedido.', correta: false }
+            ],
+            resolucao: 'O auxílio-doença (atualmente auxílio por incapacidade temporária) é um benefício para o segurado que fica incapacitado para o trabalho por mais de 15 dias, após cumprir a carência mínima (geralmente 12 contribuições mensais), salvo exceções.'
+        },
+        {
+            questao: 'Sobre os tipos de aposentadoria e as recentes alterações legislativas, assinale a opção correta:',
+            opcoes: [
+                { texto: 'A idade mínima para aposentadoria por idade é a mesma para homens e mulheres em todas as situações.', correta: false },
+                { texto: 'A aposentadoria por tempo de contribuição foi extinta pela Reforma da Previdência de 2019, sendo substituída pela aposentadoria por idade ou por pontos.', correta: true },
+                { texto: 'A aposentadoria especial é concedida a qualquer trabalhador, independentemente da atividade exercida.', correta: false },
+                { texto: 'O valor da aposentadoria por invalidez é sempre de 100% da média das contribuições.', correta: false }
+            ],
+            resolucao: 'A Emenda Constitucional nº 103/2019 (Reforma da Previdência) extinguiu a aposentadoria por tempo de contribuição como regra geral, introduzindo novas regras de transição baseadas em idade e/ou pontos, além da aposentadoria por idade.'
+        },
+        {
+            questao: 'Em relação ao benefício de salário-maternidade, assinale a alternativa correta:',
+            opcoes: [
+                { texto: 'O salário-maternidade é devido à segurada empregada, trabalhadora avulsa e empregada doméstica, durante 120 dias, com início até 28 dias antes do parto ou na data do parto.', correta: true },
+                { texto: 'O salário-maternidade é um benefício exclusivo para mulheres que trabalham com carteira assinada.', correta: false },
+                { texto: 'O pai pode requerer o salário-maternidade em caso de falecimento da mãe, mas por um período reduzido.', correta: false },
+                { texto: 'Não há exigência de carência para a concessão do salário-maternidade.', correta: false }
+            ],
+            resolucao: 'O salário-maternidade é um benefício previdenciário devido às seguradas (e em algumas situações ao segurado) por 120 dias, abrangendo diversas categorias, com início que pode variar de até 28 dias antes do parto ou na data do parto.'
+        },
+        {
+            questao: 'Sobre a pensão por morte, é correto afirmar:',
+            opcoes: [
+                { texto: 'A pensão por morte é devida aos dependentes do segurado falecido, independentemente de este estar contribuindo para o INSS na data do óbito.', correta: false },
+                { texto: 'O cônjuge e os filhos menores de 21 anos não emancipados são considerados dependentes preferenciais para fins de pensão por morte.', correta: true },
+                { texto: 'A pensão por morte é vitalícia para todos os dependentes, independentemente da idade ou condição.', correta: false },
+                { texto: 'Os pais e irmãos nunca podem ser considerados dependentes para fins de pensão por morte.', correta: false }
+            ],
+            resolucao: 'A pensão por morte é um benefício pago aos dependentes do segurado que faleceu ou teve sua morte presumida. A lei estabelece classes de dependentes, sendo o cônjuge/companheiro(a) e os filhos menores de 21 anos (ou inválidos/deficientes) os de primeira classe, com dependência econômica presumida.'
+        },
+        {
+            questao: 'O auxílio-acidente é um benefício previdenciário devido pelo INSS a quem:',
+            opcoes: [
+                { texto: 'É devido ao segurado que sofrer acidente de qualquer natureza, resultando em sequelas que impliquem redução da capacidade para o trabalho que habitualmente exercia.', correta: true },
+                { texto: 'O auxílio-acidente é um benefício temporário, concedido enquanto durar a redução da capacidade.', correta: false },
+                { texto: 'O auxílio-acidente substitui o salário de contribuição do segurado.', correta: false },
+                { texto: 'A concessão do auxílio-acidente exige período de carência de 12 meses.', correta: false }
+            ],
+            resolucao: 'O auxílio-acidente é um benefício de caráter indenizatório, pago após a consolidação das lesões decorrentes de acidente de qualquer natureza, que resultem em sequelas que impliquem redução da capacidade para o trabalho habitual do segurado. Ele não impede o segurado de continuar trabalhando.'
+        },
+        {
+            questao: 'Sobre o Benefício de Prestação Continuada (BPC), assinale a alternativa correta:',
+            opcoes: [
+                { texto: 'É um benefício de prestação continuada da assistência social, que garante um salário mínimo mensal à pessoa com deficiência ou idoso com 65 anos ou mais que comprovem não possuir meios de prover a própria manutenção, nem de tê-la provida por sua família.', correta: true },
+                { texto: 'O BPC é um benefício previdenciário que exige contribuição prévia ao INSS.', correta: false },
+                { texto: 'A idade mínima para o idoso ter direito ao BPC é de 60 anos.', correta: false },
+                { texto: 'Pessoas com deficiência têm direito ao BPC independentemente de sua renda familiar.', correta: false }
+            ],
+            resolucao: 'O BPC é um benefício assistencial (Lei Orgânica da Assistência Social - LOAS), ou seja, não exige contribuição prévia. É destinado a idosos (65 anos ou mais) e pessoas com deficiência que comprovem não ter meios de prover a própria subsistência ou de tê-la provida pela família.'
+        },
+        {
+            questao: 'O que se entende por "período de graça" na Previdência Social brasileira?',
+            opcoes: [
+                { texto: 'O período de graça é o tempo que o segurado mantém a qualidade de segurado, independentemente de contribuições, após cessar as contribuições para o INSS, variando de 3 a 36 meses, dependendo da situação.', correta: true },
+                { texto: 'O período de graça é o tempo máximo de atraso nas contribuições sem perder a qualidade de segurado.', correta: false },
+                { texto: 'Todos os segurados mantêm a qualidade de segurado por 12 meses após a última contribuição, sem exceção.', correta: false },
+                { texto: 'Durante o período de graça, o segurado não tem direito a nenhum benefício previdenciário.', correta: false }
+            ],
+            resolucao: 'O período de graça é um intervalo de tempo em que o segurado, mesmo sem contribuir para o INSS, mantém a sua qualidade de segurado e, consequentemente, o direito a alguns benefícios. Sua duração varia de acordo com o tipo de segurado e sua situação contributiva anterior.'
+        },
+        {
+            questao: 'Quais são as principais fontes de custeio da Seguridade Social, conforme a legislação brasileira?',
+            opcoes: [
+                { texto: 'São fontes de custeio da Seguridade Social as contribuições sociais dos empregadores, dos trabalhadores e sobre a receita de concursos de prognósticos, entre outras.', correta: true },
+                { texto: 'O custeio da Seguridade Social é feito exclusivamente por impostos gerais da União.', correta: false },
+                { texto: 'Apenas os trabalhadores formais contribuem para o custeio da Seguridade Social.', correta: false },
+                { texto: 'As contribuições para a Seguridade Social são facultativas para todos os segurados.', correta: false }
+            ],
+            resolucao: 'A Seguridade Social no Brasil é financiada por diversas fontes, conforme o Art. 195 da Constituição Federal, incluindo as contribuições sociais de empregadores (sobre a folha de salários, receita ou faturamento, lucro), trabalhadores e sobre a receita de concursos de prognósticos, entre outras fontes de receita da União.'
+        }
+    ],
+    'prova2': [
+        // Suas questões da prova2 aqui
+        {
+            questao: 'Sobre a previdência complementar, assinale a alternativa correta:',
+            opcoes: [
+                { texto: 'A previdência complementar possui caráter facultativo e é organizada de forma autônoma em relação ao Regime Geral de Previdência Social.', correta: true },
+                { texto: 'A previdência complementar é de filiação 
+
+
+...restante do código...
+...................FIM DO script.js......................
+
+LISTA DE ARQUIVOS midia/:
+
+
+Fim dos códigos.

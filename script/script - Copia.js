@@ -1,4 +1,4 @@
-// script.js
+// scritp/script.js
 
 // 'questoes' será carregado do arquivo script/provas.js
 
@@ -31,7 +31,8 @@ function gerarQuestoes(provaKey) {
 
     // Verifica se 'questoes' está definido e se a provaKey existe
     if (typeof questoes === 'undefined' || !questoes[provaKey]) {
-        quizContainer.innerHTML = '<p>Erro: Dados das provas não carregados ou prova não encontrada.</p>';
+        // Mensagem de fallback, se por algum motivo ainda não encontrar
+        quizContainer.innerHTML = '<p>Erro: Dados das provas não carregados ou prova não encontrada. Verifique seu arquivo script/provas.js.</p>';
         console.error('Objeto "questoes" não encontrado ou provaKey inválida:', provaKey);
         return;
     }
@@ -76,14 +77,60 @@ function gerarQuestoes(provaKey) {
 
         questionDiv.appendChild(optionsDiv);
 
+        /************* CRIAR EXPLICAÇÃO ***************/
+
         const explanationDiv = document.createElement('div');
         explanationDiv.className = 'explanation';
-        explanationDiv.innerHTML = `<strong>Resolução:</strong> ${item.resolucao}`;
+
+        // CONTEÚDO DA RESOLUÇÃO (APENAS O TEXTO)
+        const resolutionContent = document.createElement('p');
+        resolutionContent.innerHTML = `<strong>Resolução:</strong> ${item.resolucao}`;
+        explanationDiv.appendChild(resolutionContent);
+
+        // NOVO: BOTÃO "SABER MAIS"
+        const saberMaisBtn = document.createElement('button');
+        saberMaisBtn.textContent = 'Saber Mais';
+        saberMaisBtn.className = 'saber-mais-btn'; // Use a classe CSS que adicionamos
+        saberMaisBtn.addEventListener('click', (event) => { // <-- Adicionado 'event' como parâmetro
+            event.stopPropagation(); // <-- CRUCIAL: Impede que o clique no botão "suba" para a div da resolução
+            pararLeitura(); // Para qualquer leitura antes de abrir o Gemini
+
+            // Pega apenas o texto da resolução, excluindo a tag <strong>
+            const fullResolutionText = resolutionContent.textContent.replace('Resolução: ', '').trim();
+            abrirGeminiComResolucao(fullResolutionText);
+        });
+        explanationDiv.appendChild(saberMaisBtn);
+
+        // NOVO LISTENER: Adicionado especificamente para a explicação
+        // Este listener só será ativado se o clique for na explanationDiv, mas não no botão Saber Mais (devido ao stopPropagation)
+        explanationDiv.addEventListener('click', (event) => {
+            // Se o modo de leitura está em "mudo", não faz a leitura.
+            if (modoLeituraSelect.value === 'mudo') {
+                pararLeitura();
+                return;
+            }
+
+            pararLeitura(); // Para qualquer leitura anterior
+
+            // Seleciona especificamente o parágrafo dentro da explanationDiv
+            // (que contém o texto da resolução).
+            // Usamos event.currentTarget para garantir que estamos buscando dentro da 'explanationDiv' clicada.
+            const explanationParagraph = event.currentTarget.querySelector('p');
+            if (explanationParagraph) {
+                // Pega o texto do parágrafo, removendo o "Resolução: " inicial
+                const textToRead = explanationParagraph.textContent.replace('Resolução:', '').trim(); // Corrigido para remover "Resolução:" com dois pontos
+                lerTexto(textToRead);
+            }
+        });
+
+
         questionDiv.appendChild(explanationDiv);
 
+        // ADICIONA A QUESTÃO À PROVA DIV
         provaDiv.appendChild(questionDiv);
     });
 
+    // ANEXA A PROVA COMPLETA AO CONTÊINER PRINCIPAL
     quizContainer.appendChild(provaDiv);
     currentQuestionIndex = 0; // Reinicia o índice da questão para a nova prova
 }
@@ -160,6 +207,10 @@ function readStudyPart(provaData, questionIndex, partIndex) {
         return;
     }
 
+    // Rola a tela para a questão atual
+    currentQuestionDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+
     switch (partIndex) {
         case 0: // Enunciado da questão
             textToRead = `Questão ${questionIndex + 1}: ${item.questao}`;
@@ -219,6 +270,19 @@ function readStudyPart(provaData, questionIndex, partIndex) {
     };
 
     speechSynthesizer.speak(currentUtterance);
+}
+
+
+// NOVA FUNÇÃO: ABRE O GEMINI COM A RESOLUÇÃO
+function abrirGeminiComResolucao(resolucaoTexto) {
+    // Codifica o texto da resolução para ser seguro em uma URL
+    const encodedResolution = encodeURIComponent(resolucaoTexto + "\n\nExplique melhor.");
+
+    // URL base do Google Search. O Gemini é acessado via Google Search para prompts
+    // A interface do Gemini pode mudar, mas essa abordagem de busca costuma ser robusta.
+    const geminiUrl = `https://www.google.com/search?q=${encodedResolution}&udm=0`; // udm=2 força o modo de conversação/gemini
+
+    window.open(geminiUrl, '_blank'); // Abre em uma nova aba
 }
 
 
@@ -293,7 +357,6 @@ document.getElementById('btnValidar').addEventListener('click', () => {
 
     if (!allAnswered) {
         alert('Por favor, responda a todas as questões antes de validar.');
-        currentScore = 0; // Reseta o score se nem todas foram respondidas
     } else {
         currentScore = correctAnswersCount; // Atualiza o score com as acertos
         alert(`Correção concluída! Você acertou ${currentScore} de ${totalQuestions} questões.`);
@@ -343,7 +406,7 @@ document.getElementById('btnEstudo').addEventListener('click', () => {
     pararLeitura(); // Para qualquer leitura anterior e remove destaques
     isReadingStudyMode = true; // Ativa o flag do modo estudo
     studyModeReadingIndex = 0; // Reinicia o contador de questões
-    
+
     const currentProvaKey = `prova${currentProofIndex + 1}`;
     const currentProvaData = questoes[currentProvaKey];
     if (!currentProvaData) {
@@ -398,6 +461,27 @@ document.getElementById('btnProxima').addEventListener('click', () => {
     }
 });
 
+// PROVA ANTERIOR
+document.getElementById('btnPrev').addEventListener('click', () => {
+    pararLeitura(); // Para a leitura e remove destaques
+    isReadingStudyMode = false; // Desativa o modo estudo de leitura
+
+    if (typeof questoes === 'undefined') {
+        alert('Erro: Dados das provas não carregados.');
+        return;
+    }
+
+    if (currentProofIndex > 0) { // Verifica se não estamos na primeira prova
+        currentProofIndex--; // Decrementa o índice para ir para a prova anterior
+        const prevProvaKey = `prova${currentProofIndex + 1}`; // Calcula a chave da prova anterior
+        gerarQuestoes(prevProvaKey); // Carrega as questões da prova anterior
+        // Zera o estado da nova prova ao carregar
+        document.getElementById('btnZerar').click(); // Reusa a função zerar para limpar o estado
+    } else {
+        alert('Você já está na primeira prova disponível.');
+    }
+});
+
 // Botão LISTA (para exibir as provas disponíveis e permitir seleção)
 document.getElementById('btnLista').addEventListener('click', () => {
     pararLeitura(); // Para a leitura e remove destaques
@@ -446,6 +530,8 @@ modoLeituraSelect.addEventListener('change', () => {
 
 
 // Event listener para ler questões/opções ao clicar nelas (depende do MODO LEITURA)
+// IMPORTANTE: A lógica para clicar na resolução foi removida daqui
+// e adicionada diretamente na explanationDiv na função gerarQuestoes() para maior precisão.
 document.addEventListener('click', (event) => {
     // Se o modo estudo de leitura estiver ativo, não interfere com cliques individuais
     if (isReadingStudyMode) {
@@ -475,10 +561,9 @@ document.addEventListener('click', (event) => {
     } else if (event.target.closest('.question .options label')) { // Clicou em uma opção
         const optionText = event.target.closest('.question .options label').textContent;
         lerTexto(optionText);
-    } else if (event.target.closest('.explanation.show')) { // Clicou na explicação (se estiver visível)
-        const explanationText = event.target.closest('.explanation.show').textContent;
-        lerTexto(explanationText);
     }
+    // O bloco 'else if (event.target.closest('.explanation.show'))' foi REMOVIDO daqui.
+    // Ele agora é tratado por um listener mais específico na função gerarQuestoes.
 });
 
 // Inicialização: carrega a primeira prova quando a página é carregada

@@ -1,4 +1,4 @@
-// script.js
+// scritp/script.js
 
 // 'questoes' será carregado do arquivo script/provas.js
 
@@ -87,12 +87,13 @@ function gerarQuestoes(provaKey) {
         resolutionContent.innerHTML = `<strong>Resolução:</strong> ${item.resolucao}`;
         explanationDiv.appendChild(resolutionContent);
 
-        // NOVO: BOTÃO "SABER MAIS"
+        // BOTÃO "SABER MAIS"
         const saberMaisBtn = document.createElement('button');
         saberMaisBtn.textContent = 'Saber Mais';
-        saberMaisBtn.className = 'saber-mais-btn'; // Use a classe CSS que adicionamos
-        saberMaisBtn.addEventListener('click', (event) => { // <-- Adicionado 'event' como parâmetro
-            event.stopPropagation(); // <-- CRUCIAL: Impede que o clique no botão "suba" para a div da resolução
+        saberMaisBtn.className = 'saber-mais-btn';
+        saberMaisBtn.addEventListener('click', (event) => {
+            // CRUCIAL: Impede que o clique no botão "suba" para a div da resolução
+            event.stopPropagation();
             pararLeitura(); // Para qualquer leitura antes de abrir o Gemini
 
             // Pega apenas o texto da resolução, excluindo a tag <strong>
@@ -101,28 +102,27 @@ function gerarQuestoes(provaKey) {
         });
         explanationDiv.appendChild(saberMaisBtn);
 
-        // NOVO LISTENER: Adicionado especificamente para a explicação
+        // LISTENER ESPECÍFICO PARA A EXPLICAÇÃO/RESOLUÇÃO
         // Este listener só será ativado se o clique for na explanationDiv, mas não no botão Saber Mais (devido ao stopPropagation)
         explanationDiv.addEventListener('click', (event) => {
             // Se o modo de leitura está em "mudo", não faz a leitura.
             if (modoLeituraSelect.value === 'mudo') {
-                pararLeitura();
+                pararLeitura(); // Garante que qualquer fala anterior seja parada, mesmo no modo mudo.
                 return;
             }
 
-            pararLeitura(); // Para qualquer leitura anterior
+            pararLeitura(); // <--- AQUI: Interrompe qualquer leitura anterior e limpa o buffer.
 
             // Seleciona especificamente o parágrafo dentro da explanationDiv
             // (que contém o texto da resolução).
-            // Usamos event.currentTarget para garantir que estamos buscando dentro da 'explanationDiv' clicada.
             const explanationParagraph = event.currentTarget.querySelector('p');
             if (explanationParagraph) {
                 // Pega o texto do parágrafo, removendo o "Resolução: " inicial
-                const textToRead = explanationParagraph.textContent.replace('Resolução:', '').trim(); // Corrigido para remover "Resolução:" com dois pontos
+                // Usando uma RegEx para ser mais flexível com espaços após "Resolução:"
+                const textToRead = explanationParagraph.textContent.replace(/^Resolução:\s*/, '').trim();
                 lerTexto(textToRead);
             }
         });
-
 
         questionDiv.appendChild(explanationDiv);
 
@@ -153,7 +153,7 @@ function initSpeechSynthesis() {
 // Função para ler o texto (usada para ler texto completo ou elementos individuais)
 function lerTexto(text) {
     if (speechSynthesizer && modoLeituraSelect.value !== 'mudo') {
-        pararLeitura(); // Para qualquer leitura anterior
+        pararLeitura(); // <--- AQUI: Garante que qualquer fala anterior seja parada e o buffer limpo.
 
         console.log('Tentando ler texto:', text);
         currentUtterance = new SpeechSynthesisUtterance(text);
@@ -163,6 +163,8 @@ function lerTexto(text) {
             console.log('Leitura concluída com sucesso!');
         };
         currentUtterance.onerror = function(event) {
+            // O erro 'interrupted' é comum e esperado quando uma nova fala é iniciada antes da anterior terminar.
+            // Isso significa que a parada e limpeza do buffer funcionaram como esperado.
             console.error('Erro na leitura:', event.error);
         };
 
@@ -178,9 +180,9 @@ function lerTexto(text) {
 // Função para parar a leitura
 function pararLeitura() {
     if (speechSynthesizer && speechSynthesizer.speaking) {
-        speechSynthesizer.cancel();
+        speechSynthesizer.cancel(); // <--- Esta linha interrompe a fala atual e limpa a fila (buffer) de falas pendentes.
     }
-    currentUtterance = null;
+    currentUtterance = null; // Limpa a referência para a fala atual.
     // Sempre remove destaques ao parar a leitura
     document.querySelectorAll('.highlighted-text').forEach(el => {
         el.classList.remove('highlighted-text');
@@ -189,7 +191,7 @@ function pararLeitura() {
 
 // Função para iniciar a leitura da próxima parte da questão no Modo Estudo
 function readStudyPart(provaData, questionIndex, partIndex) {
-    pararLeitura(); // Garante que a leitura atual é interrompida
+    pararLeitura(); // <--- AQUI: Garante que a leitura atual é interrompida e o buffer limpo.
 
     const item = provaData[questionIndex];
     let textToRead = '';
@@ -259,6 +261,7 @@ function readStudyPart(provaData, questionIndex, partIndex) {
         }
     };
     currentUtterance.onerror = function(event) {
+        // O erro 'interrupted' aqui também é esperado se o usuário clicar em "Stop" ou mudar de prova, etc.
         console.error(`Modo Estudo: Erro na leitura da parte ${partIndex} da questão ${questionIndex + 1}:`, event.error);
         // Em caso de erro, remove o destaque e tenta ir para a próxima parte
         if (elementToHighlight) {
@@ -366,7 +369,7 @@ document.getElementById('btnValidar').addEventListener('click', () => {
 
 // Botão LER PROVA COMPLETA (Lê todo o conteúdo visível de uma vez!)
 document.getElementById('btnLer').addEventListener('click', () => {
-    pararLeitura(); // Para a leitura e remove destaques
+    pararLeitura(); // <--- AQUI: Garante que a leitura atual é interrompida e o buffer limpo.
     isReadingStudyMode = false; // Desativa o modo estudo de leitura se ativo
 
     const currentProvaKey = `prova${currentProofIndex + 1}`;
@@ -397,13 +400,13 @@ document.getElementById('btnLer').addEventListener('click', () => {
 
 // Botão STOP LEITURA
 document.getElementById('btnStop').addEventListener('click', () => {
-    pararLeitura(); // Para a leitura e remove destaques
+    pararLeitura(); // <--- AQUI: Interrompe a leitura e limpa o buffer.
     isReadingStudyMode = false; // Desativa o modo estudo de leitura
 });
 
 // Botão MODO ESTUDO (Inicia a leitura sequencial com destaque)
 document.getElementById('btnEstudo').addEventListener('click', () => {
-    pararLeitura(); // Para qualquer leitura anterior e remove destaques
+    pararLeitura(); // <--- AQUI: Garante que qualquer leitura anterior seja parada e o buffer limpo.
     isReadingStudyMode = true; // Ativa o flag do modo estudo
     studyModeReadingIndex = 0; // Reinicia o contador de questões
 
@@ -441,7 +444,7 @@ document.getElementById('btnEstudo').addEventListener('click', () => {
 
 // Botão PRÓXIMA PROVA
 document.getElementById('btnProxima').addEventListener('click', () => {
-    pararLeitura(); // Para a leitura e remove destaques
+    pararLeitura(); // <--- AQUI: Garante que a leitura atual é interrompida e o buffer limpo.
     isReadingStudyMode = false; // Desativa o modo estudo de leitura
 
     if (typeof questoes === 'undefined') {
@@ -463,7 +466,7 @@ document.getElementById('btnProxima').addEventListener('click', () => {
 
 // PROVA ANTERIOR
 document.getElementById('btnPrev').addEventListener('click', () => {
-    pararLeitura(); // Para a leitura e remove destaques
+    pararLeitura(); // <--- AQUI: Garante que a leitura atual é interrompida e o buffer limpo.
     isReadingStudyMode = false; // Desativa o modo estudo de leitura
 
     if (typeof questoes === 'undefined') {
@@ -484,7 +487,7 @@ document.getElementById('btnPrev').addEventListener('click', () => {
 
 // Botão LISTA (para exibir as provas disponíveis e permitir seleção)
 document.getElementById('btnLista').addEventListener('click', () => {
-    pararLeitura(); // Para a leitura e remove destaques
+    pararLeitura(); // <--- AQUI: Garante que a leitura atual é interrompida e o buffer limpo.
     isReadingStudyMode = false; // Desativa o modo estudo de leitura
 
     const listaDiv = document.getElementById('listaExercicios');
@@ -517,7 +520,7 @@ document.getElementById('btnLista').addEventListener('click', () => {
 
 // Event listener para o MODO LEITURA (seleção de caixa de texto)
 modoLeituraSelect.addEventListener('change', () => {
-    pararLeitura(); // Para a leitura e remove destaques
+    pararLeitura(); // <--- AQUI: Garante que a leitura atual é interrompida e o buffer limpo.
     isReadingStudyMode = false; // Desativa o modo estudo de leitura
 
     const selectedMode = modoLeituraSelect.value;
@@ -530,8 +533,7 @@ modoLeituraSelect.addEventListener('change', () => {
 
 
 // Event listener para ler questões/opções ao clicar nelas (depende do MODO LEITURA)
-// IMPORTANTE: A lógica para clicar na resolução foi removida daqui
-// e adicionada diretamente na explanationDiv na função gerarQuestoes() para maior precisão.
+// A lógica para clicar na resolução foi movida para um listener mais específico na função gerarQuestoes().
 document.addEventListener('click', (event) => {
     // Se o modo estudo de leitura estiver ativo, não interfere com cliques individuais
     if (isReadingStudyMode) {
@@ -543,7 +545,12 @@ document.addEventListener('click', (event) => {
         return;
     }
 
-    pararLeitura(); // Para qualquer leitura anterior de elementos individuais e remove destaques
+    pararLeitura(); // <--- AQUI: Para qualquer leitura anterior de elementos individuais e limpa o buffer.
+
+    // Certifique-se de que o clique não foi na explicação (resolução), pois isso é tratado por um listener específico
+    if (event.target.closest('.explanation')) {
+        return; // Não faz nada aqui, o listener na explanationDiv já cuidou disso
+    }
 
     if (event.target.closest('.question p')) { // Clicou no texto da questão (enunciado)
         const questionDiv = event.target.closest('.question');
@@ -562,8 +569,6 @@ document.addEventListener('click', (event) => {
         const optionText = event.target.closest('.question .options label').textContent;
         lerTexto(optionText);
     }
-    // O bloco 'else if (event.target.closest('.explanation.show'))' foi REMOVIDO daqui.
-    // Ele agora é tratado por um listener mais específico na função gerarQuestoes.
 });
 
 // Inicialização: carrega a primeira prova quando a página é carregada
@@ -571,3 +576,4 @@ document.addEventListener('DOMContentLoaded', () => {
     initSpeechSynthesis();
     gerarQuestoes('prova1'); // Carrega a PROVA 1 por padrão ao iniciar
 });
+//fim do código
