@@ -14,18 +14,29 @@ let currentUtterance = null; // Para controlar a fala atual
 // Variável para controlar a leitura sequencial no Modo Estudo
 let studyModeReadingIndex = 0;
 let isReadingStudyMode = false; // Flag para saber se estamos no modo estudo de leitura
+let stopleitura = 1;
 
 // Elementos do DOM
 const quizContainer = document.getElementById('quiz-container');
 const scoreDisplay = document.getElementById('scoreDisplay');
 const modoLeituraSelect = document.getElementById('modoLeitura');
 
-// Função para atualizar o display do score
+// --- Funções de Lógica Principal ---
+
+/**
+ * Atualiza o display do score no HTML.
+ */
 function updateScoreDisplay() {
     scoreDisplay.textContent = `${currentScore}/${totalQuestions}`;
 }
 
-// Função para gerar as questões na página HTML
+/**
+ * Gera e exibe as questões de uma prova específica no container do quiz.
+ * Limpa o conteúdo anterior, carrega os dados da prova, reseta o score
+ * e cria os elementos HTML para cada questão, suas opções e a área de explicação.
+ *
+ * @param {string} provaKey A chave da prova a ser carregada (ex: 'prova1', 'prova2').
+ */
 function gerarQuestoes(provaKey) {
     quizContainer.innerHTML = ''; // Limpa o conteúdo anterior
 
@@ -123,7 +134,6 @@ function gerarQuestoes(provaKey) {
             }
         });
 
-
         questionDiv.appendChild(explanationDiv);
 
         // ADICIONA A QUESTÃO À PROVA DIV
@@ -135,12 +145,26 @@ function gerarQuestoes(provaKey) {
     currentQuestionIndex = 0; // Reinicia o índice da questão para a nova prova
 }
 
-// Função para inicializar o SpeechSynthesis
+// --- Funções de Leitura em Voz Alta (Speech Synthesis) ---
+
+/**
+ * Inicializa a API SpeechSynthesis do navegador.
+ * Verifica a disponibilidade da API e configura o `speechSynthesizer`.
+ * Desabilita as opções de leitura se a API não for suportada.
+ */
 function initSpeechSynthesis() {
     if ('speechSynthesis' in window) {
         speechSynthesizer = window.speechSynthesis;
+        console.log('SpeechSynthesis API disponível e inicializada.');
+        // Adicione um listener para quando as vozes estiverem carregadas
+        if (speechSynthesizer.getVoices().length === 0) {
+            speechSynthesizer.onvoiceschanged = () => {
+                console.log('Vozes do SpeechSynthesis carregadas.');
+            };
+        }
     } else {
         alert('Seu navegador não suporta a API SpeechSynthesis. A função de leitura não estará disponível.');
+        console.error('SpeechSynthesis API não disponível no navegador.');
         // Desativar opções de leitura se a API não estiver disponível
         modoLeituraSelect.value = 'mudo';
         modoLeituraSelect.disabled = true;
@@ -150,7 +174,12 @@ function initSpeechSynthesis() {
     }
 }
 
-// Função para ler o texto (usada para ler texto completo ou elementos individuais)
+/**
+ * Lê um texto usando a API SpeechSynthesis.
+ * Interrompe qualquer leitura anterior antes de iniciar uma nova.
+ *
+ * @param {string} text O texto a ser lido.
+ */
 function lerTexto(text) {
     if (speechSynthesizer && modoLeituraSelect.value !== 'mudo') {
         pararLeitura(); // Para qualquer leitura anterior
@@ -175,7 +204,9 @@ function lerTexto(text) {
     }
 }
 
-// Função para parar a leitura
+/**
+ * Interrompe qualquer leitura em andamento e remove destaques de texto.
+ */
 function pararLeitura() {
     if (speechSynthesizer && speechSynthesizer.speaking) {
         speechSynthesizer.cancel();
@@ -187,7 +218,14 @@ function pararLeitura() {
     });
 }
 
-// Função para iniciar a leitura da próxima parte da questão no Modo Estudo
+/**
+ * Inicia a leitura sequencial de uma parte específica de uma questão no "Modo Estudo".
+ * Lê o enunciado, a resposta correta e a resolução, destacando o elemento lido.
+ *
+ * @param {Array} provaData Os dados da prova atual.
+ * @param {number} questionIndex O índice da questão atual.
+ * @param {number} partIndex O índice da parte da questão a ser lida (0: enunciado, 1: resposta, 2: resolução).
+ */
 function readStudyPart(provaData, questionIndex, partIndex) {
     pararLeitura(); // Garante que a leitura atual é interrompida
 
@@ -218,7 +256,7 @@ function readStudyPart(provaData, questionIndex, partIndex) {
             break;
         case 1: // Resposta correta
             const correctOption = item.opcoes.find(op => op.correta);
-            textToRead = correctOption ? `Resposta correta: ${correctOption.texto}` : 'Resposta correta não encontrada.';
+            textToRead = correctOption ? `Resposta: ${correctOption.texto}` : 'Resposta correta não encontrada.';
             // Encontra o label da resposta correta para destacar
             elementToHighlight = currentQuestionDiv.querySelector(`input[name="prova${currentProofIndex + 1}-questao-${questionIndex}"][data-correct="true"]`).closest('label');
             break;
@@ -272,8 +310,12 @@ function readStudyPart(provaData, questionIndex, partIndex) {
     speechSynthesizer.speak(currentUtterance);
 }
 
-
-// NOVA FUNÇÃO: ABRE O GEMINI COM A RESOLUÇÃO
+/**
+ * Abre uma nova aba do navegador com uma pesquisa no Google (direcionando para o Gemini, se possível)
+ * contendo o texto da resolução e uma solicitação para explicar melhor.
+ *
+ * @param {string} resolucaoTexto O texto da resolução a ser usada na pesquisa.
+ */
 function abrirGeminiComResolucao(resolucaoTexto) {
     // Codifica o texto da resolução para ser seguro em uma URL
     const encodedResolution = encodeURIComponent(resolucaoTexto + "\n\nExplique melhor.");
@@ -285,10 +327,13 @@ function abrirGeminiComResolucao(resolucaoTexto) {
     window.open(geminiUrl, '_blank'); // Abre em uma nova aba
 }
 
-
 // --- Funções dos Botões do Menu ---
 
-// Botão ZERAR
+/**
+ * Adiciona um listener ao botão "Zerar" para resetar o progresso atual.
+ * Limpa as seleções de rádio, remove feedbacks visuais, oculta explicações,
+ * zera o score e atualiza o display.
+ */
 document.getElementById('btnZerar').addEventListener('click', () => {
     if (confirm('Tem certeza que deseja zerar o progresso atual e recomeçar?')) {
         pararLeitura(); // Para a leitura e remove destaques
@@ -312,7 +357,11 @@ document.getElementById('btnZerar').addEventListener('click', () => {
     }
 });
 
-// Botão VALIDAR
+/**
+ * Adiciona um listener ao botão "Validar" para corrigir as respostas da prova atual.
+ * Verifica cada questão, aplica feedback visual (correta/incorreta),
+ * mostra as explicações e atualiza o score.
+ */
 document.getElementById('btnValidar').addEventListener('click', () => {
     pararLeitura(); // Para a leitura e remove destaques
     isReadingStudyMode = false; // Desativa o modo estudo de leitura
@@ -364,30 +413,64 @@ document.getElementById('btnValidar').addEventListener('click', () => {
     updateScoreDisplay(); // Atualiza o display do score após a validação
 });
 
-// Botão LER PROVA COMPLETA (Lê todo o conteúdo visível de uma vez!)
+/**
+ * Adiciona um listener ao botão "Ler Prova Completa" para ler todo o conteúdo visível da prova atual.
+ * Concatena o título da prova, enunciados das questões, opções (se o modo for 'completa')
+ * e resoluções (se visíveis) e lê sequencialmente.
+ */
 document.getElementById('btnLer').addEventListener('click', () => {
     pararLeitura(); // Para a leitura e remove destaques
+    stopleitura = 1;
     isReadingStudyMode = false; // Desativa o modo estudo de leitura se ativo
 
     const currentProvaKey = `prova${currentProofIndex + 1}`;
     const currentProvaElement = document.getElementById(currentProvaKey);
 
     if (currentProvaElement && modoLeituraSelect.value !== 'mudo') {
-        let fullTextToRead = '';
-        fullTextToRead += currentProvaElement.querySelector('h2').textContent + '. '; // Título da prova
+        let textParts = [];
+        textParts.push(currentProvaElement.querySelector('h2').textContent + '. '); // Título da prova
 
         currentProvaElement.querySelectorAll('.question').forEach((questionDiv) => {
             const questionText = questionDiv.querySelector('p').textContent;
-            fullTextToRead += questionText + '. ';
+            textParts.push(questionText + '. ');
 
             if (modoLeituraSelect.value === 'completa') { // Inclui opções se o modo for 'completa'
                 questionDiv.querySelectorAll('.options label').forEach(label => {
                     const optionText = label.textContent;
-                    fullTextToRead += optionText + '. ';
+                    textParts.push(optionText + '. ');
                 });
             }
+            // Adiciona a resolução também, se houver
+            const explanationParagraph = questionDiv.querySelector('.explanation p');
+            if (explanationParagraph && explanationParagraph.classList.contains('show')) { // Apenas se a explicação estiver visível
+                const resolutionText = explanationParagraph.textContent.replace('Resolução:', '').trim();
+                textParts.push('Resolução: ' + resolutionText + '. ');
+            }
         });
-        lerTexto(fullTextToRead); // Usa a função lerTexto original para ler a string completa
+
+        // Agora, itera sobre as partes e as fala sequencialmente
+        let currentPartIndex = 0;
+
+        function speakNextPart() {
+            if (currentPartIndex < textParts.length && stopleitura === 1) {
+                const partToSpeak = textParts[currentPartIndex];
+                currentUtterance = new SpeechSynthesisUtterance(partToSpeak);
+                currentUtterance.lang = 'pt-BR';
+                currentUtterance.onend = () => {
+                    currentPartIndex++;
+                    speakNextPart(); // Chama a próxima parte quando a atual terminar
+                };
+                currentUtterance.onerror = (event) => {
+                    console.error('Erro ao ler parte do texto:', event.error);
+                    currentPartIndex++;
+                    speakNextPart(); // Tenta a próxima parte mesmo se houver erro
+                };
+                speechSynthesizer.speak(currentUtterance);
+            } else {
+                console.log('Leitura completa da prova concluída.');
+            }
+        }
+        speakNextPart(); // Inicia a leitura da primeira parte
     } else if (modoLeituraSelect.value === 'mudo') {
         alert('O modo de leitura está em "Mudo". Por favor, selecione outra opção para ativar a leitura.');
     } else {
@@ -395,13 +478,22 @@ document.getElementById('btnLer').addEventListener('click', () => {
     }
 });
 
-// Botão STOP LEITURA
+/**
+ * Adiciona um listener ao botão "STOP LEITURA" para interromper qualquer leitura em andamento.
+ * Desativa o modo estudo de leitura e remove destaques.
+ */
 document.getElementById('btnStop').addEventListener('click', () => {
     pararLeitura(); // Para a leitura e remove destaques
     isReadingStudyMode = false; // Desativa o modo estudo de leitura
+
+    stopleitura = 0;
 });
 
-// Botão MODO ESTUDO (Inicia a leitura sequencial com destaque)
+/**
+ * Adiciona um listener ao botão "MODO ESTUDO" para ativar o modo de estudo.
+ * Exibe todas as respostas corretas e resoluções, e inicia a leitura sequencial
+ * (enunciado, resposta correta, resolução) com destaque.
+ */
 document.getElementById('btnEstudo').addEventListener('click', () => {
     pararLeitura(); // Para qualquer leitura anterior e remove destaques
     isReadingStudyMode = true; // Ativa o flag do modo estudo
@@ -438,8 +530,10 @@ document.getElementById('btnEstudo').addEventListener('click', () => {
     }
 });
 
-
-// Botão PRÓXIMA PROVA
+/**
+ * Adiciona um listener ao botão "Próxima Prova" para carregar a próxima prova disponível.
+ * Interrompe leituras, desativa o modo estudo e carrega a próxima prova, se houver.
+ */
 document.getElementById('btnProxima').addEventListener('click', () => {
     pararLeitura(); // Para a leitura e remove destaques
     isReadingStudyMode = false; // Desativa o modo estudo de leitura
@@ -461,7 +555,10 @@ document.getElementById('btnProxima').addEventListener('click', () => {
     }
 });
 
-// PROVA ANTERIOR
+/**
+ * Adiciona um listener ao botão "Prova Anterior" para carregar a prova anterior.
+ * Interrompe leituras, desativa o modo estudo e carrega a prova anterior, se houver.
+ */
 document.getElementById('btnPrev').addEventListener('click', () => {
     pararLeitura(); // Para a leitura e remove destaques
     isReadingStudyMode = false; // Desativa o modo estudo de leitura
@@ -482,7 +579,10 @@ document.getElementById('btnPrev').addEventListener('click', () => {
     }
 });
 
-// Botão LISTA (para exibir as provas disponíveis e permitir seleção)
+/**
+ * Adiciona um listener ao botão "Lista" para exibir ou ocultar a lista de provas disponíveis.
+ * Permite ao usuário selecionar uma prova para carregar.
+ */
 document.getElementById('btnLista').addEventListener('click', () => {
     pararLeitura(); // Para a leitura e remove destaques
     isReadingStudyMode = false; // Desativa o modo estudo de leitura
@@ -515,7 +615,10 @@ document.getElementById('btnLista').addEventListener('click', () => {
     listaDiv.style.display = listaDiv.style.display === 'block' ? 'none' : 'block';
 });
 
-// Event listener para o MODO LEITURA (seleção de caixa de texto)
+/**
+ * Adiciona um listener para o evento de mudança na seleção do "Modo de Leitura".
+ * Interrompe leituras e informa o usuário sobre o modo selecionado.
+ */
 modoLeituraSelect.addEventListener('change', () => {
     pararLeitura(); // Para a leitura e remove destaques
     isReadingStudyMode = false; // Desativa o modo estudo de leitura
@@ -528,11 +631,11 @@ modoLeituraSelect.addEventListener('change', () => {
     }
 });
 
-
-// Event listener para ler questões/opções ao clicar nelas (depende do MODO LEITURA)
-// IMPORTANTE: A lógica para clicar na resolução foi removida daqui
-// e adicionada diretamente na explanationDiv na função gerarQuestoes() para maior precisão.
-
+/**
+ * Adiciona um listener global para cliques em elementos da página.
+ * Com base no elemento clicado e no modo de leitura selecionado,
+ * lê o texto da opção, resolução ou enunciado da questão.
+ */
 document.addEventListener('click', (event) => {
     // Se o modo estudo de leitura estiver ativo, não interfere com cliques individuais
     if (isReadingStudyMode) {
@@ -578,10 +681,13 @@ document.addEventListener('click', (event) => {
     }
 });
 
-// Inicialização: carrega a primeira prova quando a página é carregada
+// --- Inicialização ---
+
+/**
+ * Event listener que aguarda o carregamento completo do DOM.
+ * Inicializa a síntese de fala e carrega a primeira prova.
+ */
 document.addEventListener('DOMContentLoaded', () => {
     initSpeechSynthesis();
     gerarQuestoes('prova1'); // Carrega a PROVA 1 por padrão ao iniciar
 });
-
-//fim do código
