@@ -1,7 +1,10 @@
 Criei esse site para estudos e gostaria da sua ajuda para resolver algo.
 
-1 - 
-2 - 
+1 - quando aparece a resolução e eu clico nela, o listening lê toda a questão, mas eu queria que lesse somente a resolução que eu cliquei.
+
+2 - só que eu estou com um problema, quando eu clico na div resolução que foi criada, para que o código possa ler, ele consegue capturar o paragrafo corretamente, mas na hora de ler ele da um erro de leitura. script.js:168 Erro na leitura: interrupted currentUtterance.onerror	@	script.js:168
+OBS. para todas outras parte de leira ele funciona corretamente. menos nessa.
+
 3 - 
 
 Obs.: Não coloque espaço antes dos código (para não dar erro de caracteres quando eu for colar).
@@ -1320,79 +1323,11 @@ const questoes = {
                 { texto: 'Apenas os trabalhadores com carteira assinada têm direito à Previdência Social.', correta: false },
                 { texto: 'A Previdência Social é um sistema contributivo e de filiação obrigatória, respeitando os princípios da universalidade de cobertura e do cálculo dos benefícios.', correta: true },
                 { texto: 'A Previdência Social oferece benefícios para todos os cidadãos, independentemente de contribuição prévia.', correta: false },
-                { texto: 'Os benefícios da Previdência Social são custeados exclusivamente pelos empregadores.', correta: false }
-            ],
-            resolucao: 'A Previdência Social é um sistema de caráter contributivo e de filiação obrigatória, o que significa que o acesso aos benefícios depende de contribuições prévias. Ela busca a universalidade de cobertura e do cálculo dos benefícios, mas com a contrapartida das contribuições.'
-        },
-        {
-            questao: 'Em relação ao auxílio-doença, assinale a alternativa correta:',
-            opcoes: [
-                { texto: 'Auxílio-doença é devido ao segurado que, após cumprir a carência exigida, fica incapacitado para o seu trabalho ou para a sua atividade habitual por mais de 15 dias consecutivos.', correta: true },
-                { texto: 'Auxílio-doença é um benefício concedido apenas a trabalhadores rurais.', correta: false },
-                { texto: 'Não há necessidade de carência para a concessão de auxílio-doença.', correta: false },
-                { texto: 'O auxílio-doença é um benefício vitalício, uma vez concedido.', correta: false }
-            ],
-            resolucao: 'O auxílio-doença (atualmente auxílio por incapacidade temporária) é um benefício para o segurado que fica incapacitado para o trabalho por mais de 15 dias, após cumprir a carência mínima (geralmente 12 contribuições mensais), salvo exceções.'
-        },
-        {
-            questao: 'Sobre os tipos de aposentadoria e as recentes alterações legislativas, assinale a opção correta:',
-            opcoes: [
-                { texto: 'A idade mínima para aposentadoria por idade é a mesma para homens e mulheres em todas as situações.', correta: false },
-                { texto: 'A aposentadoria por tempo de contribuição foi extinta pela Reforma da Previdência de 2019, sendo substituída pela aposentadoria por idade ou por pontos.', correta: true },
-                { texto: 'A aposentadoria especial é concedida a qualquer trabalhador, independentemente da atividade exercida.', correta: false },
-                { texto: 'O valor da aposentadoria por invalidez é sempre de 100% da média das contribuições.', correta: false }
-            ],
-            resolucao: 'A Emenda Constitucional nº 103/2019 (Reforma da Previdência) extinguiu a aposentadoria por tempo de contribuição como regra geral, introduzindo novas regras de transição baseadas em idade e/ou pontos, além da aposentadoria por idade.'
-        },
-        {
-            questao: 'Em relação ao benefício de salário-maternidade, assinale a alternativa correta:',
-            opcoes: [
-                { texto: 'O salário-maternidade é devido à segurada empregada, trabalhadora avulsa e empregada doméstica, durante 120 dias, com início até 28 dias antes do parto ou na data do parto.', correta: true },
-                { texto: 'O salário-maternidade é um benefício exclusivo para mulheres que trabalham com carteira assinada.', correta: false },
-                { texto: 'O pai pode requerer o salário-maternidade em caso de falecimento da mãe, mas por um período reduzido.', correta: false },
-                { texto: 'Não há exigência de carência para a concessão do salário-maternidade.', correta: false }
-            ],
-            resolucao: 'O salário-maternidade é um benefício previdenciário devido às seguradas (e em algumas situações ao segurado) por 120 dias, abrangendo diversas categorias, com início que pode variar de até 28 dias antes do parto ou na data do parto.'
-        },
-        {
-            questao: 'Sobre a pensão por morte, é correto afirmar:',
-            opcoes: [
-                { texto: 'A pensão por morte é devida aos dependentes do segurado falecido, independentemente de este estar contribuindo para o INSS na data do óbito.', correta: false },
-                { texto: 'O cônjuge e os filhos menores de 21 anos não emancipados são considerados dependentes preferenciais para fins de pensão por morte.', correta: true },
-                { texto: 'A pensão por morte é vitalícia para todos os dependentes, independentemente da idade ou condição.', correta: false },
-                { texto: 'Os pais e irmãos nunca podem ser considerados dependentes para fins de pensão por morte.', correta: false }
-            ],
-            resolucao: 'A pensão por morte é um benefício pago aos dependentes do segurado que faleceu ou teve sua morte presumida. A lei estabelece classes de dependentes, sendo o cônjuge/companheiro(a) e os filhos menores de 21 anos (ou inválidos/deficientes) os de primeira classe, com dependência econômica presumida.'
-        },
-        {
-            questao: 'O auxílio-acidente é um benefício previdenciário devido pelo INSS a quem:',
-            opcoes: [
-                { texto: 'É devido ao segurado que sofrer acidente de qualquer natureza, resultando em sequelas que impliquem redução da capacidade para o trabalho que habitualmente exercia.', correta: true },
-                { texto: 'O auxílio-acidente é um benefício temporário, concedido enquanto durar a redução da capacidade.', correta: false },
-                { texto: 'O auxílio-acidente substitui o salário de contribuição do segurado.', correta: false },
-                { texto: 'A concessão do auxílio-acidente exige período de carência de 12 meses.', correta: false }
-            ],
-            resolucao: 'O auxílio-acidente é um benefício de caráter indenizatório, pago após a consolidação das lesões decorrentes de acidente de qualquer natureza, que resultem em sequelas que impliquem redução da capacidade para o trabalho habitual do segurado. Ele não impede o segurado de continuar trabalhando.'
-        },
-        {
-            questao: 'Sobre o Benefício de Prestação Continuada (BPC), assinale a alternativa correta:',
-            opcoes: [
-                { texto: 'É um benefício de prestação continuada da assistência social, que garante um salário mínimo mensal à pessoa com deficiência ou idoso com 65 anos ou mais que comprovem não possuir meios de prover a própria manutenção, nem de tê-la provida por sua família.', correta: true },
-                { texto: 'O BPC é um benefício previdenciário que exige contribuição prévia ao INSS.', correta: false },
-                { texto: 'A idade mínima para o idoso ter direito ao BPC é de 60 anos.', correta: false },
-                { texto: 'Pessoas com deficiência têm direito ao BPC independentemente de sua renda familiar.', correta: false }
-            ],
-            resolucao: 'O BPC é um benefício assistencial (Lei Orgânica da Assistência Social - LOAS), ou seja, não exige contribuição prévia. É destinado a idosos (65 anos ou mais) e pessoas com deficiência que comprovem não ter meios de prover a própria subsistência ou de tê-la provida pela família.'
-        },
-        {
-            questao: 'O que se entende por "período de graça" na Previdência Social brasileira?',
-            opcoes: [
-                { texto: 'O período de graça é o tempo que o segurado mantém a qualidade de segurado, independentemente de contribuições, após cessar as contribuições para o INSS, variando de 3 a 36 meses, dependendo da situação.', correta: true },
-                { texto: 'O período de graça é o tempo máximo de atraso nas contribuições sem perder a qualidade de segurado.', correta: false },
-                { texto: 'Todos os segurados mantêm a qualidade de segurado por 12 meses após a última contribuição, sem exceção.', correta: false },
-                { texto: 'Durante o período de graça, o segurado não tem direito a nenhum benefício previdenciário.', correta: false }
-            ],
-            resolucao: 'O período de graça é um intervalo de tempo em que o segurado, mesmo sem contribuir para o INSS, mantém a sua qualidade de segurado e, consequentemente, o direito a alguns benefícios. Sua duração varia de acordo com o tipo de segurado e sua situação contributiva anterior.'
+                { texto: 'Os benefícios da Previdência Social são custeados exclusivamente pelos empregadores.', correta: 
+
+...restante dos códigos...
+
+segurado e sua situação contributiva anterior.'
         },
         {
             questao: 'Quais são as principais fontes de custeio da Seguridade Social, conforme a legislação brasileira?',
