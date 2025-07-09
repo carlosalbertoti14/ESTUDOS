@@ -461,6 +461,27 @@ document.getElementById('btnProxima').addEventListener('click', () => {
     }
 });
 
+// PROVA ANTERIOR
+document.getElementById('btnPrev').addEventListener('click', () => {
+    pararLeitura(); // Para a leitura e remove destaques
+    isReadingStudyMode = false; // Desativa o modo estudo de leitura
+
+    if (typeof questoes === 'undefined') {
+        alert('Erro: Dados das provas não carregados.');
+        return;
+    }
+
+    if (currentProofIndex > 0) { // Verifica se não estamos na primeira prova
+        currentProofIndex--; // Decrementa o índice para ir para a prova anterior
+        const prevProvaKey = `prova${currentProofIndex + 1}`; // Calcula a chave da prova anterior
+        gerarQuestoes(prevProvaKey); // Carrega as questões da prova anterior
+        // Zera o estado da nova prova ao carregar
+        document.getElementById('btnZerar').click(); // Reusa a função zerar para limpar o estado
+    } else {
+        alert('Você já está na primeira prova disponível.');
+    }
+});
+
 // Botão LISTA (para exibir as provas disponíveis e permitir seleção)
 document.getElementById('btnLista').addEventListener('click', () => {
     pararLeitura(); // Para a leitura e remove destaques

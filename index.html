@@ -9,7 +9,11 @@
     <meta name="keywords" content="concurso público, questões, provas, estudo, preparação, gabarito, resolução, simulado, legislação, português, raciocínio lógico">
     <meta name="author" content="Seu Nome ou Nome da Plataforma">
     <meta name="email" content="c.alberto.ti14@gmail.com">
-    <link rel="canonical" href="https://estudodeprovas.netlify.app/"> <link rel="shortcut icon" href="midia/favicon.ico" type="image/x-icon"> <link rel="stylesheet" href="estilos/style.css">
+    <link rel="canonical" href="https://estudodeprovas.netlify.app/"> <link rel="shortcut icon" href="midia/favicon.ico" type="image/x-icon"> 
+    
+        <link rel="stylesheet" href="estilos/style.css">
+         <link rel="stylesheet" href="estilos/style_apoio.css"> 
+
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet"> <meta property="og:url" content="https://estudodeprovas.netlify.app/"> <meta property="og:type" content="website">
     <meta property="og:title" content="Estudo para Concurso Público: Prepare-se e Conquiste Sua Vaga!">
     <meta property="og:description" content="Acesse questões de concursos públicos com resoluções, modo estudo e acompanhamento de desempenho para sua aprovação.">
@@ -35,10 +39,11 @@
     <nav>
         <button id="btnZerar">ZERAR</button>
         <button id="btnValidar">VALIDAR</button>
-        <button id="btnLer">LER PROVA COMPLETA</button>
+        <button id="btnLer">LER TUDO</button>
         <button id="btnStop">STOP LEITURA</button>
         <button id="btnEstudo">MODO ESTUDO</button>
-        <button id="btnProxima">PRÓXIMA PROVA</button>
+        <button id="btnPrev">⬅️</button>
+        <button id="btnProxima">➡️</button>
         <button id="btnLista">LISTA DE PROVAS</button>
 
         <div class="controls-group">
@@ -50,10 +55,19 @@
             </select>
         </div>
 
+
+
         <div class="controls-group">
             <span>SCORE: <span id="scoreDisplay">0/10</span></span>
         </div>
     </nav>
+
+
+        <div id="info">
+            <h2>"Para que seu dispositivo possa ler a questão para você, basta clicar no enunciado desejado"...bons estudos! 😉👍</h2>
+
+        </div>
+
 
     <div class="container">
         <div id="listaExercicios" style="display: none;">
@@ -62,6 +76,26 @@
             </div>
     </div>
 
+
+    <section id="apoio">
+    <p>COMPARTILHAR CONHECIMENTO</p>
+    <div>
+        <a href="mailto:suportecalp@gmail.com?subject=Contato%20Sobre%20ESTUDO%20DE%20PROVAS">
+            <img src="midia/faleconosco.png" alt="Fale Conosco" class="fale-conosco-icon"> FALE CONOSCO (Link Direto)
+        </a>
+    </div>
+    <div class="share-buttons">
+        <a href="#" id="shareFacebook"><img src="midia/comp_facebook.png" alt="Compartilhar no Facebook"></a>
+        <a href="#" id="shareWhatsapp"><img src="midia/comp_whatsapp.png" alt="Compartilhar no WhatsApp"></a>
+    </div>
+
+    <div class="copy-link-button">
+        <button id="copyLinkButton">COPIAR LINK</button>
+    </div>
+
+    <div><a href="apoio.html" target="_blank" >APOIAR COM DONATIOVO</a> </div>
+    </section>
+
     <footer>
         <p>&copy; 2025 Seu Site de Estudos. Todos os direitos reservados.</p>
     </footer>
@@ -69,5 +103,9 @@
     
     <script src="script/provas.js"></script> 
     <script src="script/script.js"></script>
+    <script src="script/compartilhe.js"></script>
+    <script src="script/contato.js"></script>
+
+
 </body>
 </html>
