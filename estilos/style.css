@@ -1,0 +1,254 @@
+/* Geral */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7f6;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 960px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Cabeçalho */
+header {
+    background-color: #2c3e50;
+    color: #ffffff;
+    padding: 15px 0;
+    text-align: center;
+    border-radius: 8px 8px 0 0;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2em;
+}
+
+/* Menu de Navegação */
+nav {
+    background-color: #34495e;
+    padding: 10px 0;
+    border-radius: 0 0 8px 8px;
+    text-align: center;
+    margin-bottom: 20px;
+    display: flex; /* Usar flexbox para alinhar itens */
+    flex-wrap: wrap; /* Permitir quebra de linha em telas menores */
+    justify-content: center; /* Centralizar itens */
+    align-items: center; /* Alinhar verticalmente */
+    gap: 10px; /* Espaço entre os itens */
+}
+
+nav button {
+    background-color: #e67e22;
+    color: #ffffff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em; /* Ajuste o tamanho da fonte para caber mais botões */
+    transition: background-color 0.3s ease;
+    white-space: nowrap; /* Impede que o texto do botão quebre linha */
+}
+
+nav button:hover {
+    background-color: #d35400;
+}
+
+/* Grupo de Controles no Menu (para Modo Leitura e Score) */
+.controls-group {
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Espaço entre label/select/span */
+    color: #ffffff;
+    font-size: 0.9em;
+}
+
+.controls-group label {
+    margin-right: 5px;
+}
+
+.controls-group select {
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background-color: #f8f8f8;
+    font-size: 0.9em;
+}
+
+#scoreDisplay {
+    font-weight: bold;
+    color: #f1c40f; /* Cor para o score */
+}
+
+
+/* Seções de Questões (Provas) */
+.prova {
+    margin-bottom: 30px;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #fdfdfd;
+}
+
+.prova h2 {
+    color: #2c3e50;
+    border-bottom: 2px solid #e67e22;
+    padding-bottom: 10px;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.question {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #eee;
+    border-radius: 6px;
+    background-color: #ffffff;
+}
+
+.question p {
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.question .options label {
+    display: block;
+    margin-bottom: 8px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+}
+
+.question .options label:hover {
+    background-color: #f0f0f0;
+}
+
+.question .options input[type="radio"] {
+    margin-right: 10px;
+}
+
+/* Estilo para resposta correta */
+.correct-answer {
+    background-color: #d4edda; /* Verde claro */
+    color: #155724; /* Verde escuro */
+    font-weight: bold;
+}
+
+/* Estilo para resposta incorreta (opcional, se quiser destacar) */
+.incorrect-answer {
+    background-color: #f8d7da; /* Vermelho claro */
+    color: #721c24; /* Vermelho escuro */
+    font-weight: bold;
+}
+
+/* Div de Explicação (Inicialmente oculta) */
+.explanation {
+    margin-top: 15px;
+    padding: 15px;
+    background-color: #ecf0f1;
+    border-left: 5px solid #3498db;
+    border-radius: 4px;
+    font-size: 0.9em;
+    color: #555;
+    display: none; /* Inicia oculta */
+}
+
+/* Estilo para quando a div de explicação estiver visível */
+.explanation.show {
+    display: block;
+}
+
+/* Rodapé */
+footer {
+    text-align: center;
+    margin-top: 30px;
+    padding: 15px;
+    background-color: #2c3e50;
+    color: #ffffff;
+    border-radius: 0 0 8px 8px;
+}
+
+/* Lista de Exercícios (Opcional, inicialmente oculta) */
+#listaExercicios {
+    display: none; /* Oculta por padrão */
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #ecf0f1;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+#listaExercicios ul {
+    list-style: none;
+    padding: 0;
+}
+
+#listaExercicios ul li {
+    margin-bottom: 10px;
+}
+
+#listaExercicios ul li button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%; /* Para que os botões ocupem 100% da largura */
+    text-align: left; /* Alinhar texto à esquerda */
+}
+
+#listaExercicios ul li button:hover {
+    background-color: #2980b9;
+}
+
+/* ESTILO PARA DESTAQUE DE LEITURA (MANTIDO E INTEGRADO) */
+.highlighted-text {
+    background-color: #ffff99; /* Amarelo suave */
+    font-weight: bold; /* Opcional: deixar o texto em negrito */
+    transition: background-color 0.3s ease; /* Transição suave para o destaque */
+    padding: 2px 5px; /* Pequeno preenchimento para visualização */
+    border-radius: 3px;
+}
+
+/* estilos/style.css */
+
+/* ... (seu CSS existente) ... */
+
+
+
+/* BOTÃO SABER MAIS */
+
+.explanation button.saber-mais-btn {
+    background-color: #4CAF50; /* Um verde agradável */
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    margin-top: 10px; /* Espaçamento acima do botão */
+    float: right; /* Para alinhar à direita */
+    transition: background-color 0.3s ease;
+}
+
+.explanation button.saber-mais-btn:hover {
+    background-color: #45a049; /* Verde um pouco mais escuro ao passar o mouse */
+}
+
+/* Limpar o float para que o próximo conteúdo não flutue ao lado do botão */
+.explanation::after {
+    content: "";
+    display: table;
+    clear: both;
+}
