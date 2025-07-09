@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const shareWhatsappButton = document.getElementById('shareWhatsapp');
     const copyLinkButton = document.getElementById('copyLinkButton'); // Novo botão
     const siteUrl = "https://estudodeprovas.netlify.app/"; // URL do seu site
-    const siteTitle = "SITE DE ESTUDOS"; // Título para o compartilhamento
+    const siteTitle = "SITE DE ESTUDOS"; // Título para o compartilhamento (não utilizado nas URLs de compartilhamento atuais)
 
     // Função para compartilhar no Facebook
     if (shareFacebookButton) {
@@ -18,7 +18,8 @@ document.addEventListener('DOMContentLoaded', function() {
     if (shareWhatsappButton) {
         shareWhatsappButton.addEventListener('click', function(event) {
             event.preventDefault();
-            const message = `Confira o K-Pop Brasil! Notícias e tudo sobre seus grupos favoritos: ${siteUrl}`;
+            // MENSAGEM ATUALIZADA PARA SEU SITE DE ESTUDOS
+            const message = `Prepare-se para concursos públicos! Acesse questões atualizadas, gabaritos e resoluções detalhadas em: ${siteUrl}`;
             const whatsappShareUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`;
             window.open(whatsappShareUrl, '_blank');
         });
