@@ -2,8 +2,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const shareFacebookButton = document.getElementById('shareFacebook');
     const shareWhatsappButton = document.getElementById('shareWhatsapp');
     const copyLinkButton = document.getElementById('copyLinkButton'); // Novo botão
-    const siteUrl = "https://kpopbrasil.netlify.app/"; // URL do seu site
-    const siteTitle = "K-Pop Brasil"; // Título para o compartilhamento
+    const siteUrl = "https://estudodeprovas.netlify.app/"; // URL do seu site
+    const siteTitle = "SITE DE ESTUDOS"; // Título para o compartilhamento
 
     // Função para compartilhar no Facebook
     if (shareFacebookButton) {
