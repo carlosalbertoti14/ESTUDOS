@@ -1,8 +1,16 @@
-// media/provas.js
+// script/prova_INSS-1.js
 
-const questoes = {
-    'prova1': [
-        // Suas questões da prova1 aqui
+// Garante que o objeto 'questoes' exista.
+// Isso é crucial para que as provas sejam adicionadas corretamente.
+if (typeof questoes === 'undefined') {
+    var questoes = {};
+}
+
+// Adiciona as questões da "Simulado INSS - Prova 1" ao objeto 'questoes'.
+// A chave 'Simulado INSS - Prova 1' DEVE ser a mesma que você usa no examManifest.js.
+questoes['Simulado INSS - Prova 1 - TESTE 1'] = {
+    title: 'TESTE 1', // Título mais descritivo para o quiz
+    data: [ // 'data' contém o array de questões
         {
             questao: 'De acordo com a Constituição Federal de 1988, a seguridade social brasileira compreende um conjunto integrado de ações de iniciativa dos Poderes Públicos e da sociedade, visando assegurar os direitos relativos à:',
             opcoes: [
@@ -103,9 +111,13 @@ const questoes = {
             ],
             resolucao: 'A Seguridade Social no Brasil é financiada por diversas fontes, conforme o Art. 195 da Constituição Federal, incluindo as contribuições sociais de empregadores (sobre a folha de salários, receita ou faturamento, lucro), trabalhadores e sobre a receita de concursos de prognósticos, entre outras fontes de receita da União.'
         }
-    ],
-    'prova2': [
-        // Suas questões da prova2 aqui
+    ]
+}; // <--- FECHAMENTO CORRETO DO OBJETO DO PRIMEIRO TESTE
+
+
+questoes['Simulado INSS - Prova 1 - TESTE 2'] = {
+    title: 'TESTE 2', // Título para esta prova específica
+    data: [ // 'data' contém o array de questões desta segunda prova
         {
             questao: 'Sobre a previdência complementar, assinale a alternativa correta:',
             opcoes: [
@@ -206,10 +218,16 @@ const questoes = {
             ],
             resolucao: 'A qualidade de segurado é a condição legal que vincula o indivíduo ao Regime Geral de Previdência Social. É essencial para ter direito aos benefícios previdenciários, pois comprova que o segurado está protegido pelo sistema, seja por estar contribuindo ou por estar no período de graça.'
         }
-    ],
-    'prova3': [
-        // Suas questões da prova3 aqui
-        {
+    ]
+
+};
+
+
+questoes['Simulado INSS - Prova 1 - TESTE 3'] = {
+title: 'TESTE 3', // Título para esta prova específica
+data: [ 
+
+    {
             questao: 'O Princípio da Universalidade da Cobertura e do Atendimento na Seguridade Social significa que:',
             opcoes: [
                 { texto: 'Todos os cidadãos brasileiros, independentemente de contribuição, têm direito a todos os benefícios da seguridade social.', correta: false },
@@ -309,10 +327,15 @@ const questoes = {
             ],
             resolucao: 'A regra de transição do pedágio de 50% foi criada para aqueles segurados que, na data da entrada em vigor da Reforma da Previdência (13/11/2019), estavam a dois anos ou menos de atingir o tempo de contribuição necessário para aposentadoria. Eles precisavam cumprir o tempo restante mais um "pedágio" de 50% sobre esse tempo faltante.'
         }
-    ],
-    // --- NOVAS PROVAS A PARTIR DAQUI ---
-    'prova4': [
-        {
+
+]} /* FIM DO TESTE 3 */
+
+
+questoes['NOME_DA_PROVA - Prova 1 - TESTE 4'] = {
+title: 'TESTE 4', // Título para esta prova específica
+data: [ 
+
+    {
             questao: 'Qual o principal objetivo da Lei Orgânica da Saúde (Lei nº 8.080/90)?',
             opcoes: [
                 { texto: 'Regulamentar a previdência social no Brasil.', correta: false },
@@ -412,9 +435,15 @@ const questoes = {
             ],
             resolucao: 'A ANVISA é uma autarquia federal vinculada ao Ministério da Saúde, responsável por promover a proteção da saúde da população através do controle sanitário de produtos e serviços, incluindo o registro, inspeção e fiscalização.'
         }
-    ],
-    'prova5': [
-        {
+
+]} /* FIM DO TESTE 4 */
+
+
+questoes['NOME_DA_PROVA - Prova 1 - TESTE 5'] = {
+title: 'TESTE 5', // Título para esta prova específica
+data: [ 
+
+    {
             questao: 'Segundo a Lei de Improbidade Administrativa (Lei nº 8.429/92), o enriquecimento ilícito ocorre quando:',
             opcoes: [
                 { texto: 'O agente público recebe propina, comissão ou vantagem indevida em razão do cargo, mandato, função, emprego ou atividade.', correta: true },
@@ -514,9 +543,15 @@ const questoes = {
             ],
             resolucao: 'A Lei 14.230/2021, que alterou a LIA, exigiu o dolo (intenção específica de praticar a ilegalidade) para a configuração de todos os atos de improbidade, ou seja, a conduta culposa não mais configura improbidade administrativa. Também introduziu a figura do acordo de não persecução cível.'
         }
-    ],
-    'prova6': [
-        {
+
+]} /* FIM DO TESTE 5 */
+
+
+questoes['NOME_DA_PROVA - Prova 1 - TESTE 6'] = {
+title: 'TESTE 6', // Título para esta prova específica
+data: [ 
+
+    {
             questao: 'Segundo o Código de Ética Profissional do Servidor Público Civil do Poder Executivo Federal (Decreto nº 1.171/94), a finalidade última do servidor público é:',
             opcoes: [
                 { texto: 'Garantir seu próprio bem-estar e progresso na carreira.', correta: false },
@@ -616,9 +651,15 @@ const questoes = {
             ],
             resolucao: 'O uso de bens públicos para fins particulares configura uma apropriação indevida e viola princípios éticos como a moralidade e a lealdade à instituição, além de poder configurar ilícito administrativo.'
         }
-    ],
-    'prova7': [
-        {
+
+]} /* FIM DO TESTE 6 */
+
+
+questoes['NOME_DA_PROVA - Prova 1 - TESTE 7'] = {
+title: 'TESTE 7', // Título para esta prova específica
+data: [ 
+
+    {
             questao: 'De acordo com a Lei nº 8.112/90 (Regime Jurídico Único), a nomeação para cargo de provimento efetivo depende de:',
             opcoes: [
                 { texto: 'Indicação política.', correta: false },
@@ -718,9 +759,15 @@ const questoes = {
             ],
             resolucao: 'O Art. 83 da Lei nº 8.112/90 permite a licença por motivo de doença em pessoa da família por até 90 dias com remuneração integral em cada período de 12 meses, desde que comprovada a necessidade de assistência direta do servidor e que a assistência não possa ser prestada concomitantemente com o exercício do cargo.'
         }
-    ],
-    'prova8': [
-        {
+
+]} /* FIM DO TESTE 7 */
+
+
+questoes['NOME_DA_PROVA - Prova 1 - TESTE 8'] = {
+title: 'TESTE 8', // Título para esta prova específica
+data: [ 
+
+    {
             questao: 'Conforme a Lei nº 9.784/99 (Processo Administrativo Federal), a Administração Pública deve obedecer, entre outros, aos princípios da:',
             opcoes: [
                 { texto: 'Livre iniciativa e concorrência.', correta: false },
@@ -820,9 +867,15 @@ const questoes = {
             ],
             resolucao: 'A Lei nº 9.784/99 é a lei geral de processo administrativo no âmbito federal. Isso significa que, se houver uma lei específica para um determinado tipo de processo administrativo (ex: processos disciplinares), esta prevalece. No entanto, a Lei nº 9.784/99 será aplicada subsidiariamente para preencher lacunas ou complementar o que a lei específica não abordar.'
         }
-    ],
-    'prova9': [
-        {
+
+]} /* FIM DO TESTE 8 */
+
+
+questoes['NOME_DA_PROVA - Prova 1 - TESTE 9'] = {
+title: 'TESTE 9', // Título para esta prova específica
+data: [ 
+
+       {
             questao: 'A respeito da responsabilidade civil do Estado, a Constituição Federal de 1988 adota a teoria da:',
             opcoes: [
                 { texto: 'Culpa subjetiva, exigindo dolo ou culpa do agente.', correta: false },
@@ -922,9 +975,15 @@ const questoes = {
             ],
             resolucao: 'A regra geral é a irresponsabilidade do Estado por atos legislativos, uma vez que a lei é ato geral e abstrato. Excepcionalmente, pode haver responsabilidade se a lei for inconstitucional e for declarada como tal pelo STF, ou se houver revogação de lei que gerou direitos adquiridos e a lei revogadora não previu indenização, ou ainda em leis de efeitos concretos (equiparadas a atos administrativos).'
         }
-    ],
-    'prova10': [
-        {
+
+]} /* FIM DO TESTE 9 */
+
+
+questoes['NOME_DA_PROVA - Prova 1 - TESTE 10'] = {
+title: 'TESTE 10', // Título para esta prova específica
+data: [ 
+
+       {
             questao: 'Em relação aos atos administrativos, assinale a alternativa correta sobre seus atributos:',
             opcoes: [
                 { texto: 'São sempre autoexecutórios, independentemente de previsão legal.', correta: false },
@@ -1024,5 +1083,6 @@ const questoes = {
             ],
             resolucao: 'A Administração pode revogar atos válidos por critérios de oportunidade e conveniência (mérito). No entanto, não pode "revogar" um ato ilegal (nulo); ela deve anulá-lo, pois o ato ilegal já nasceu sem validade. A legalidade é um critério de validade, não de mérito.'
         }
-    ]
-};
+
+]} /* FIM DO TESTE 10 */
+

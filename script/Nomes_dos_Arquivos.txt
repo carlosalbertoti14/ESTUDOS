@@ -1,0 +1,9 @@
+compartilhe.js
+contato.js
+examManifest.js
+prova_CORREIO-1.js
+prova_INSS-1.js
+prova_INSS-2.js
+quizGenerator.js
+script.js
+speechManager.js

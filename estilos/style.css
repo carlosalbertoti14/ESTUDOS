@@ -255,6 +255,10 @@ footer {
     background-color: #2980b9;
 }
 
+.exam-category  ul li button {
+    text-align: left;
+}
+
 /* ESTILO PARA DESTAQUE DE LEITURA (MANTIDO E INTEGRADO) */
 .highlighted-text {
     background-color: #ffff99; /* Amarelo suave */
@@ -295,3 +299,9 @@ footer {
     display: table;
     clear: both;
 }
+
+
+
+
+
+/* fim do css */

@@ -35,7 +35,7 @@ function updateScoreDisplay() {
  * Limpa o conteúdo anterior, carrega os dados da prova, reseta o score
  * e cria os elementos HTML para cada questão, suas opções e a área de explicação.
  *
- * @param {string} provaKey A chave da prova a ser carregada (ex: 'prova1', 'prova2').
+ * @param {string} provaKey A chave da prova a ser carregada (ex: 'TESTE-1', 'TESTE-2').
  */
 function gerarQuestoes(provaKey) {
     quizContainer.innerHTML = ''; // Limpa o conteúdo anterior
@@ -54,11 +54,11 @@ function gerarQuestoes(provaKey) {
     updateScoreDisplay(); // Atualiza o display do score
 
     const provaDiv = document.createElement('div');
-    provaDiv.className = 'prova';
+    provaDiv.className = 'TESTE-';
     provaDiv.id = provaKey;
 
     const tituloProva = document.createElement('h2');
-    tituloProva.textContent = provaKey.replace('prova', 'Prova '); // Ex: "Prova 1"
+    tituloProva.textContent = provaKey.replace('TESTE-', 'TESTE- '); // Ex: "Prova 1"
     provaDiv.appendChild(tituloProva);
 
     provaData.forEach((item, index) => {
@@ -600,7 +600,7 @@ document.getElementById('btnLista').addEventListener('click', () => {
     Object.keys(questoes).forEach((key, index) => {
         const li = document.createElement('li');
         const button = document.createElement('button');
-        button.textContent = key.replace('prova', 'Prova ');
+        button.textContent = key.replace('TESTE-', 'TESTE- ');
         button.addEventListener('click', () => {
             currentProofIndex = index;
             gerarQuestoes(key);
@@ -689,5 +689,5 @@ document.addEventListener('click', (event) => {
  */
 document.addEventListener('DOMContentLoaded', () => {
     initSpeechSynthesis();
-    gerarQuestoes('prova1'); // Carrega a PROVA 1 por padrão ao iniciar
+    gerarQuestoes('TESTE-1'); // Carrega a PROVA 1 por padrão ao iniciar
 });

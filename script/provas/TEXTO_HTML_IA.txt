@@ -1,0 +1,252 @@
+Criei esse site de estudos para concursos e gostaria de montar um novo arquivo com novas perguntas, segundo a mesma estrutura que te enviei, para colocar no meu site. são 100 questões sub-divididas em 10 questões, como mostra no exemplo.
+Quero que fale sobre o assunto.
+
+ESTOU FOCANDO NAS PROVAS DO INSS, ENTÃO ME AJUDA A ELABORAR QUESTÕES SOBRE.
+80 QUESTÕES SOBRE Raciocínio Lógico-Matemático E 20 SOBRE Ética no Serviço Público
+
+Obs.: Não coloque espaço antes dos código (para não dar erro de caracteres quando eu for colar).
+
+
+
+...................INICIO DO script.js......................
+...restante do código...
+
+// Garante que o objeto 'questoes' exista.
+if (typeof questoes === 'undefined') {
+    var questoes = {};
+}
+
+// --- SIMULADOS DE LÍNGUA PORTUGUESA ---
+
+questoes['Simulado Português - Bloco 1'] = {
+    title: 'Língua Portuguesa - Bloco 1: Ortografia e Acentuação',
+    data: [
+        {
+            questao: 'Assinale a alternativa em que todas as palavras estão corretamente grafadas:',
+            opcoes: [
+                { texto: 'Exceção, excesso, esceção.', correta: false },
+                { texto: 'Exceção, excesso, excessão.', correta: false },
+                { texto: 'Exceção, excesso, exceção.', correta: true },
+                { texto: 'Eceção, escesso, exceção.', correta: false }
+            ],
+            resolucao: 'A grafia correta é **exceção**, com "xc", e **excesso**, com "ss".'
+        },
+        {
+            questao: 'Em qual opção a palavra necessita de acento gráfico, de acordo com as regras de acentuação?',
+            opcoes: [
+                { texto: 'Gratuito.', correta: false },
+                { texto: 'Rubrica.', correta: false },
+                { texto: 'Avaro.', correta: false },
+                { texto: 'Item.', correta: false },
+                { texto: 'Saude.', correta: true }
+            ],
+            resolucao: 'A palavra correta é **saúde**. "Sa-ú-de" é um hiato. As vogais "i" e "u" tônicas, formando hiato com a vogal anterior, são acentuadas, desde que não estejam seguidas de "nh" e não sejam precedidas de ditongo (se a sílaba estiver em paroxítonas).'
+        },
+        {
+            questao: 'Qual palavra é acentuada pela mesma regra de "café"?',
+            opcoes: [
+                { texto: 'Lâmpada.', correta: false },
+                { texto: 'Paciência.', correta: false },
+                { texto: 'Jacaré.', correta: true },
+                { texto: 'Árvore.', correta: false }
+            ],
+            resolucao: '"Café" e "jacaré" são **oxítonas terminadas em "e"**, seguidas ou não de "s".'
+        },
+        {
+            questao: 'Assinale a alternativa que apresenta um erro de acentuação:',
+            opcoes: [
+                { texto: 'Fácil.', correta: false },
+                { texto: 'País.', correta: false },
+                { texto: 'Vôo.', correta: true },
+                { texto: 'Chapéu.', correta: false }
+            ],
+            resolucao: 'A palavra "voo" perdeu o acento com o Novo Acordo Ortográfico. Ditongos "oo" e "ee" não são mais acentuados.'
+        },
+        {
+            questao: 'A palavra "pássaro" é acentuada por ser:',
+            opcoes: [
+                { texto: 'Oxítona.', correta: false },
+                { texto: 'Paroxítona.', correta: false },
+                { texto: 'Proparoxítona.', correta: true },
+                { texto: 'Monossílaba tônica.', correta: false }
+            ],
+            resolucao: 'Todas as **proparoxítonas** são acentuadas. A sílaba tônica de "pássaro" é "pás" (terceira de trás para frente).'
+        },
+        {
+            questao: 'Em qual das alternativas a grafia das palavras está totalmente correta?',
+            opcoes: [
+                { texto: 'Pessego, exceção, pretencioso.', correta: false },
+                { texto: 'Pêssego, execeção, pretensioso.', correta: false },
+                { texto: 'Pêssego, exceção, pretensioso.', correta: true },
+                { texto: 'Pêssego, excessão, pretencioso.', correta: false }
+            ],
+            resolucao: 'As grafias corretas são **pêssego**, **exceção** e **pretensioso**.'
+        },
+        {
+            questao: 'A palavra "heroico" perdeu o acento em razão do Novo Acordo Ortográfico. Qual das opções abaixo é um caso semelhante?',
+            opcoes: [
+                { texto: 'Piauí.', correta: false },
+                { texto: 'Céu.', correta: false },
+                { texto: 'Idéia.', correta: true },
+                { texto: 'Bauru.', correta: false }
+            ],
+            resolucao: '"Heroico" e "ideia" perderam o acento porque o Novo Acordo Ortográfico eliminou o acento dos **ditongos abertos "ei" e "oi" em palavras paroxítonas**.'
+        },
+        {
+            questao: 'Qual a palavra que está incorretamente acentuada?',
+            opcoes: [
+                { texto: 'Vovô.', correta: false },
+                { texto: 'Mês.', correta: false },
+                { texto: 'Têm (eles).', correta: false },
+                { texto: 'Pôde (pretérito perfeito).', correta: false },
+                { texto: 'Pára (verbo parar).', correta: true }
+            ],
+            resolucao: 'A palavra "para" (verbo e preposição) perdeu o acento diferencial com o Novo Acordo Ortográfico, a menos que a sua homógrafa "para" (paroxítona) seja usada.'
+        },
+        {
+            questao: 'Assinale a alternativa que preenche corretamente as lacunas: "Ele _____ na mesma ______ que a minha ______. "',
+            opcoes: [
+                { texto: 'mora / casa / vizinha', correta: false },
+                { texto: 'morra / casa / vizinha', correta: false },
+                { texto: 'mora / cassa / vizinha', correta: false },
+                { texto: 'mora / casa / vizinha', correta: true } // Duplicata para evitar erro de correção, ambas estão corretas
+            ],
+            resolucao: 'A grafia correta para o verbo morar e o substantivo casa é com "s". "Cassa" seria do verbo cassar.'
+        },
+        {
+            questao: 'Em qual das frases o uso da vírgula está correto?',
+            opcoes: [
+                { texto: 'João, médico, foi trabalhar cedo.', correta: true },
+                { texto: 'João médico, foi trabalhar cedo.', correta: false },
+                { texto: 'João, médico foi trabalhar, cedo.', correta: false },
+                { texto: 'João médico foi, trabalhar cedo.', correta: false }
+            ],
+            resolucao: 'A vírgula é utilizada para isolar o **apostos explicativo** "médico".'
+        }
+    ]
+};
+
+questoes['Simulado Português - Bloco 2'] = {
+    title: 'Língua Portuguesa - Bloco 2: Classes de Palavras e Concordância',
+    data: [
+        {
+            questao: 'Qual a classe gramatical da palavra destacada em "O **velho** homem caminhava devagar."?',
+            opcoes: [
+                { texto: 'Substantivo.', correta: false },
+                { texto: 'Verbo.', correta: false },
+                { texto: 'Adjetivo.', correta: true },
+                { texto: 'Advérbio.', correta: false }
+            ],
+            resolucao: 'A palavra "velho" caracteriza o substantivo "homem", portanto, é um adjetivo.'
+        },
+        {
+            questao: 'Na frase "Os alunos estudaram **bastante** para a prova.", a palavra destacada é um(a):',
+            opcoes: [
+                { texto: 'Adjetivo.', correta: false },
+                { texto: 'Advérbio de intensidade.', correta: true },
+                { texto: 'Substantivo.', correta: false },
+                { texto: 'Verbo.', correta: false }
+            ],
+            resolucao: '"Bastante" está modificando o verbo "estudaram", indicando intensidade. Advérbios são invariáveis.'
+        },
+        {
+            questao: 'Assinale a alternativa em que há erro de concordância verbal:',
+            opcoes: [
+                { texto: 'Fazem dois anos que não o vejo.', correta: true },
+                { texto: 'Eu e ele faremos a tarefa.', correta: false },
+                { texto: 'Compraram-se muitos livros.', correta: false },
+                { texto: 'A maioria dos alunos chegou cedo.', correta: false }
+            ],
+            resolucao: 'O verbo "fazer", quando indica tempo decorrido, é impessoal e deve ficar na 3ª pessoa do singular: "Faz dois anos que não o vejo.".'
+        },
+        {
+            questao: 'Qual a classe gramatical da palavra destacada em "Ela é **a** professora de português."?',
+            opcoes: [
+                { texto: 'Pronome demonstrativo.', correta: false },
+                { texto: 'Artigo definido.', correta: true },
+                { texto: 'Preposição.', correta: false },
+                { texto: 'Advérbio.', correta: false }
+            ],
+            resolucao: '"A" está determinando o substantivo "professora", sendo, portanto, um artigo definido.'
+        },
+        {
+            questao: 'A frase "Menos pessoas compareceram ao evento." está correta quanto à concordância?',
+            opcoes: [
+                { texto: 'Sim, está correta.', correta: true },
+                { texto: 'Não, o correto seria "Menas pessoas compareceram".', correta: false }
+            ],
+            resolucao: '"Menos" é uma palavra invariável, portanto, está correta a concordância.'
+        },
+        {
+            questao: 'Em "Ele tem **muito** talento.", a palavra destacada é um(a):',
+            opcoes: [
+                { texto: 'Advérbio de modo.', correta: false },
+                { texto: 'Pronome indefinido.', correta: false },
+                { texto: 'Adjetivo.', correta: false },
+                { texto: 'Determinante (acompanha substantivo, é pronome indefinido ou adjetivo).', correta: true } // "Muito" está qualificando "talento", agindo como pronome adjetivo indefinido
+            ],
+            resolucao: '"Muito" está qualificando o substantivo "talento", indicando quantidade. Neste caso, funciona como um pronome adjetivo indefinido.'
+        },
+        {
+            questao: 'Assinale a alternativa com erro de concordância nominal:',
+            opcoes: [
+                { texto: 'É necessário a calma.', correta: true },
+                { texto: 'É necessária a calma.', correta: false },
+                { texto: 'Água e terra são elementos necessários.', correta: false },
+                { texto: 'Ela ficou meio preocupada.', correta: false }
+            ],
+            resolucao: 'A expressão "é necessário" concorda com o substantivo quando este é determinado por artigo ou pronome. O correto seria "É necessária a calma.".'
+        },
+        {
+            questao: 'Em qual das frases a palavra destacada é um substantivo?',
+            opcoes: [
+                { texto: 'Ele vive em um **grande** dilema.', correta: false },
+                { texto: 'O **azul** do céu é lindo.', correta: true },
+                { texto: 'Ela fala **bem** alto.', correta: false },
+                { texto: 'Os **dois** meninos jogavam.', correta: false }
+            ],
+            resolucao: 'O artigo "O" substantiva a palavra "azul", que originalmente é um adjetivo.'
+        },
+        {
+            questao: 'Qual a função sintática da palavra destacada em "A verdade é que todos **precisam** de ajuda."?',
+            opcoes: [
+                { texto: 'Adjetivo.', correta: false },
+                { texto: 'Verbo.', correta: true },
+                { texto: 'Substantivo.', correta: false },
+                { texto: 'Advérbio.', correta: false }
+            ],
+            resolucao: '"Precisam" é uma forma verbal (verbo precisar), conjugada na 3ª pessoa do plural do presente do indicativo.'
+        },
+        {
+            questao: 'Assinale a opção em que a concordância verbal está incorreta:',
+            opcoes: [
+                { texto: 'Mais de um candidato se inscreveu.', correta: false },
+                { texto: 'Quase cem por cento dos eleitores votou.', correta: false },
+                { texto: 'Foi eu que disse isso.', correta: true },
+                { texto: 'Cerca de dez pessoas apareceram.', correta: false }
+            ],
+            resolucao: 'Com o pronome "que", o verbo concorda com o antecedente de "que". O correto seria "Fui eu que disse isso.".'
+        }
+    ]
+};
+
+questoes['Simulado Português - Bloco 3'] = {
+    title: 'Língua Portuguesa - Bloco 3: Regência Verbal e Nominal',
+    data: [
+        {
+            questao: 'Assinale a alternativa em que a regência verbal do verbo "assistir" está correta:',
+            opcoes: [
+                { texto: 'Assisti o filme ontem à noite.', correta: false },
+                { texto: 'Assisti ao filme ontem à noite.', correta: true },
+                { texto: 'Assistir o paciente é seu dever.', correta: false },
+                { texto: 'Assisti para o jogo com entusiasmo.', correta: false }
+            ],
+            resolucao: 'O verbo "assistir", no sentido de "ver, presenciar", é transitivo indireto e exige a preposição "a". No sentido de "prestar assistência", é transitivo direto.'
+        },
+        {
+
+
+...restante do código...
+...................FIM DO script.js......................
+
+Fim dos códigos.
