@@ -93,7 +93,7 @@ questoes['Simulado Português - TESTE 1'] = {
         {
             questao: 'Assinale a alternativa que preenche corretamente as lacunas: "Ele _____ na mesma ______ que a minha ______. "',
             opcoes: [
-                { texto: 'mora / casa / vizinha', correta: false },
+                { texto: 'mora / casa / visinha', correta: false },
                 { texto: 'morra / casa / vizinha', correta: false },
                 { texto: 'mora / cassa / vizinha', correta: false },
                 { texto: 'mora / casa / vizinha', correta: true } // Duplicata para evitar erro de correção, ambas estão corretas
